@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:&display=swap');
+body{
+    background-color: black;
+}
+/* PC Mode */
+
+#navbar-logo{
+    max-width: 70%;
+}
+
+#btn-contact-us{
+    font-size: 20px;
+    padding: 15px 50px 15px 50px;
+    margin-left: 40px;
+}
+
+.banner-image {
+    background-image: url(assets/images/GMODSS/hl2_7bs7lvhIii.png);
+    background-size: cover;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.content {
+    margin-top: -50vh;
+}
+
+.title{
+    color: white;
+    font-weight: 900;
+    font-size: 60px;
+}
+
+#banner-logo {
+    margin-top: 120px;
+    margin-left: 5px;
+    max-width: 25%;
+    position: absolute;
+    border-style: solid;
+    border-color: white;
+}
+
+.bg-darker{
+    background-color: rgba(0, 0, 0, 0.692);
+}
+
+#rules {
+    background-image: url(assets/images/GMODSS/hl2_hBPEMzGGXo.png);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#rules-content {
+    padding-top: 10%;
+}
+
+#rules-list {
+    font-size: 20px;
+    margin-top: 40px;
+    color: white;
+}
+
+.text-box {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px 50px 20px 50px;
+}
+
+#server-contents {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url(assets/images/Background/33.jpg);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+#server-contents-content {
+    padding-top: 10%;
+    margin-left: 5%;
+}
+
+/* Laptop Mode */
+@media all and (min-width: 720px) and (max-width: 1366px){
+    #navbar-logo{
+        max-width: 40%;
+    }
+
+    #btn-contact-us{
+        font-size: 20px;
+        padding: 10px 30px 10px 30px;
+        margin-left: 40px;
+    }
+
+    .banner-image {
+        background-image: url(assets/images/Background/9.jpg);
+        background-size: cover;
+        font-family: 'Montserrat Alternates', sans-serif;
+    }
+
+    .content {
+        margin-top: -40vh;
+    }
+
+    .title{
+        color: white;
+        font-weight: 900;
+        font-size: 40px;
+    }
+
+    #banner-logo {
+        margin-top: 80px;
+        margin-left: 3px;
+        max-width: 25%;
+        position: absolute;
+        border-style: solid;
+        border-color: white;
+    }
+}
