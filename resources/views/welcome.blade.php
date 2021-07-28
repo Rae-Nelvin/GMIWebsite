@@ -16,29 +16,63 @@
   <body>
 
     <!-- Start of Navbar -->
-
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3 pt-4">
-        <div class="container">
-            <div class="row container-fluid">
-                <div class="col-2"><a href="#"><img src="{{ asset('assets/images/gmilogo/gmi_recreate.png') }}" alt="GMI Logo" id="navbar-logo" class="rounded-circle"></a></div>
-                <div class="col-7"></div>
-                <div class="col-3"><button class="btn btn-outline-light rounded-pill my-sm-0" type="submit" id="btn-contact-us">Contact Us</button></div>
+    <div id="intro">
+        <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark pt-4">
+            <div class="container">
+                <div class="row container-fluid">
+                    <div class="col-2"><a href="#"><img src="{{ asset('assets/images/gmilogo/gmi_recreate.png') }}" alt="GMI Logo" id="navbar-logo" class="rounded-circle"></a></div>
+                    <div class="col-6"></div>
+                    <div class="col-4"><button class="btn btn-outline-light rounded-pill my-sm-0" type="submit" id="btn-contact-us">Contact Us</button></div>
+                </div>
             </div>
+        </nav>
+        <div id="logo-banner" class="text-center">
+            <h1 class="title">Garry's Mod Indonesia<br> Revived</h1>
+            <img src="{{ asset('assets/images/gmilogo/gmi_recreate.png') }}" alt="banner-logo" class="rounded-circle" id="banner-logo">
         </div>
-    </nav>
+    </div>
 
     <!-- End of Navbar -->
 
-    <!-- Start of Banner -->
+    <!-- Start of Showcase -->
 
-    <div class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center">
-        <div class="content text-center">
-            <h1 class="title">Garry's Mod Indonesia <br> Revived</h1>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image:url({{ asset('assets/images/GMODSS/1.png') }})">
+            </div>
+            <div class="carousel-item" style="background-image:url({{ asset('assets/images/GMODSS/2.png') }})">
+            </div>
+            <div class="carousel-item" style="background-image:url({{ asset('assets/images/GMODSS/3.png') }})">
+            </div>
+            <div class="carousel-item" style="background-image:url({{ asset('assets/images/GMODSS/1.png') }})">
+            </div>
+            <div class="carousel-item" style="background-image:url({{ asset('assets/images/GMODSS/2.png') }})">
+            </div>
+            <div class="carousel-item" style="background-image:url({{ asset('assets/images/GMODSS/3.png') }})">
+            </div>
+            <div class="container" style="background: white;" id="container-carousel">
+                <div class="row">
+                    <div class="col-6">
+                        <h1>Picture</h1>
+                    </div>
+                    <div class="col-6">
+                        <h1>Tabs</h1>
+                    </div>
+                </div>
+            </div>
         </div>
-        <img src="{{ asset('assets/images/gmilogo/gmi_recreate.png') }}" alt="banner-logo" class="rounded-circle" id="banner-logo">
+        <a href="#myCarousel" class="carousel-control-prev" role="button" data-slide-to="prev"><span class="sr-only">Previous</span><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
+        <a href="#myCarousel" class="carousel-control-next" role="button" data-slide-to="next"><span class="sr-only">Next</span><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
     </div>
-
-    <!-- End of Banner -->
+    <!-- End of Showcase -->
 
     <!-- Start of Rules -->
     <div id="rules">
@@ -59,17 +93,6 @@
         </div>
     </div>
     <!-- End of Rules -->
-
-    <!-- Start of Server Contents -->
-
-    <div id="server-contents">
-        <div class="container-fluid" id="server-contents-content">
-            <h1 class="title">Server Contents</h1>
-            <p>Server menggunakan custom content yang dimana bisa anda dapatkan dengan mengklik link dibawah ini.</p>
-        </div>
-    </div>
-
-    <!-- End of Server Contents -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
