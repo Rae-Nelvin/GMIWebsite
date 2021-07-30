@@ -35,10 +35,6 @@
 <body class="hold-transition sidebar-mini layout-fixed dark-mode">
 <div class="wrapper">
 
-  <!-- Preloader -->
-  <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="{{ asset('assets/images/gmilogo/gmi_recreate.png') }}" alt="GMILogo" height="100" width="100">
-  </div>
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-dark navbar-light">

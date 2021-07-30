@@ -43,21 +43,24 @@
             <li data-target="#myCarousel" data-slide-to="2"></li>
             <li data-target="#myCarousel" data-slide-to="3"></li>
             <li data-target="#myCarousel" data-slide-to="4"></li>
-            <li data-target="#myCarousel" data-slide-to="5"></li>
         </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active element" style="background-image:url({{ asset('assets/images/GMODSS/1.png') }})">
+            @foreach ($image1 as $image1)
+            <div class="carousel-item active element" style="background-image:url(/uploads/{{$image1->file_path}})">
+            <p id="types" style="display: none">{{ $image1['types'] }}</p>
+                @foreach ($images1 as $images1)
+                <p class="picts1" style="display: none;">/uploads/{{ $images1['file_path'] }} </p>
+                @endforeach
             </div>
-            <div class="carousel-item" style="background-image:url({{ asset('assets/images/GMODSS/2.png') }})">
+            @endforeach
+            @foreach ($image2 as $image2)
+            <div class="carousel-item" style="background-image:url(/uploads/{{$image2->file_path}})">
+            <p id="types" style="display: none">{{ $image2['types'] }}</p>
             </div>
-            <div class="carousel-item" style="background-image:url({{ asset('assets/images/GMODSS/3.png') }})">
-            </div>
-            <div class="carousel-item" style="background-image:url({{ asset('assets/images/GMODSS/1.png') }})">
-            </div>
-            <div class="carousel-item" style="background-image:url({{ asset('assets/images/GMODSS/2.png') }})">
-            </div>
-            <div class="carousel-item" style="background-image:url({{ asset('assets/images/GMODSS/3.png') }})">
-            </div>
+            @endforeach
+            @foreach ($images2 as $images2)
+                <p class="picts1" style="display: none;">/uploads/{{ $images2['file_path'] }} </p>
+                @endforeach
             <div class="container" id="container-carousel">
                 <div class="row">
                     <div class="col-6 no-padding"> 
@@ -66,13 +69,13 @@
                     <div class="col-6" style="background: #0e0f14;">
                         <div class="row p-3">
                             <img src="{{ asset('assets/images/gmilogo/gmi_recreate.png') }}" alt="Gamemode Logo" class="rounded-circle" id="gamemode-logo">
-                            <h1 id="gamemode-title">GAMEMODES TITLE</h1>
+                            <h1 id="gamemode-title"></h1>
                         </div>
                         <div class="row mini-gallery">
-                            <div class="col-6 mini-gallery"><img src="{{ asset('assets/images/Background/5.jpg') }}" alt="" style="width: 100%;"></div>
-                            <div class="col-6 mini-gallery"><img src="{{ asset('assets/images/Background/2.jpg') }}" alt="" style="width: 100%;"></div>
-                            <div class="col-6 mini-gallery"><img src="{{ asset('assets/images/Background/3.jpg') }}" alt="" style="width: 100%;"></div>
-                            <div class="col-6 mini-gallery"><img src="{{ asset('assets/images/Background/4.jpg') }}" alt="" style="width: 100%;"></div>
+                            <div class="col-6 mini-gallery"><img src="" id="minigallery1" alt="" style="width: 100%;"></div>
+                            <div class="col-6 mini-gallery"><img src="" id="minigallery2" alt="" style="width: 100%;"></div>
+                            <div class="col-6 mini-gallery"><img src="" id="minigallery3" alt="" style="width: 100%;"></div>
+                            <div class="col-6 mini-gallery"><img src="" id="minigallery4" alt="" style="width: 100%;"></div>
                             <a href="#" class="mt-4"><p id="server-content">Click here to get the server contents >>></p></a>
                         </div>
                     </div>

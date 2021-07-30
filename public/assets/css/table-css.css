@@ -3358,3 +3358,11 @@
 	right: 0px;
 	bottom: 0px;
 }
+
+.w-5 {
+	display: none !important;
+}
+
+#table-pagination {
+	margin-top: 30px;
+}

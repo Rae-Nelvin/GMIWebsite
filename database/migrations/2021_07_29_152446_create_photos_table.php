@@ -18,6 +18,7 @@ class CreatePhotosTable extends Migration
             $table->string('title');
             $table->string('types');
             $table->foreignId('author_id')->references('id')->on('users');
+            $table->boolean('is_key')->default(0);
             $table->string('file_path');
             $table->timestamps();
         });

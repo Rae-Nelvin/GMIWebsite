@@ -16,9 +16,7 @@ use App\Http\Controllers\PhotoController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [MainController::class, 'index'])->name('index');
 
 Route::prefix('auth')->group(function(){
     Route::post('/check',[MainController::class, 'check'])->name('auth.check');

@@ -22,6 +22,7 @@ class Photos extends Model
         'title',
         'types',
         'author_id',
+        'is_key',
         'file_path'
     ];
 }
