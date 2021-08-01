@@ -19,7 +19,7 @@ class PhotoController extends Controller
 
     function check($types,$id){
         
-        $check = Photos::where('types',$types)->where('is_key',1)->get()->first();
+        $check = Photos::where([['types','=',$types],['is_key','=',1]])->first();
         $photos = Photos::where('types',$types)->orderBy('id','DESC')->get()->first();
 
         if($check == NULL)
@@ -31,7 +31,8 @@ class PhotoController extends Controller
         else{
             $check->is_key = false;
             $photos->is_key = true;
-            $check->$photos->save();
+            $check->save();
+            $photos->save();
         }
     }
 

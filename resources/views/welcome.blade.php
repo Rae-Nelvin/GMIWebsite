@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Style CSS -->
     <link rel="stylesheet" href="{{ asset('style.css') }}">
-    <link rel="stylesheet" href="{{ asset('rules.css') }}">
 
     <title>Garry's Mod Indonesia</title>
   </head>
@@ -17,7 +16,7 @@
 
     <!-- Start of Navbar -->
     <div id="intro">
-        <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark pt-4">
+        <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark pt-4" style="margin-left: 7%;">
             <div class="container">
                 <div class="row container-fluid">
                     <div class="col-2"><a href="#"><img src="{{ asset('assets/images/gmilogo/gmi_recreate.png') }}" alt="GMI Logo" id="navbar-logo" class="rounded-circle"></a></div>
@@ -27,7 +26,7 @@
             </div>
         </nav>
         <div id="logo-banner" class="text-center">
-            <h1 class="title">Garry's Mod Indonesia<br> Revived</h1>
+            <h1 class="title" style="margin-left: 1%;">Garry's Mod Indonesia<br> Revived</h1>
             <img src="{{ asset('assets/images/gmilogo/gmi_recreate.png') }}" alt="banner-logo" class="rounded-circle" id="banner-logo">
         </div>
     </div>
@@ -83,7 +82,7 @@
             </div>
         </div>
         <a href="#myCarousel" class="carousel-control-prev" role="button" data-slide-to="prev" style="margin-left: -5%"><span class="sr-only">Previous</span><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
-        <a href="#myCarousel" class="carousel-control-next" role="button" data-slide-to="next" style="margin-right: -5%"><span class="sr-only">Next</span><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
+        <a href="#myCarousel" class="carousel-control-next" role="button"  style="margin-right: -5%"  onclick="$('#myCarousel').carousel('next')"><span class="sr-only">Next</span><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
     </div>
     <!-- End of Showcase -->
 
@@ -106,6 +105,10 @@
         </div>
     </div>
     <!-- End of Rules -->
+
+    <!-- Start of Admin & Staff -->
+
+    <!-- End of Admin & Staff -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

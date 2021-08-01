@@ -18,7 +18,7 @@ html,body
     position: relative;
     background-size: cover;
     font-family: 'Montserrat Alternates', sans-serif;
-    animation: slide 20s infinite;
+    animation: slide 25s infinite;
 }
 
 @keyframes slide {
@@ -53,7 +53,7 @@ html,body
 #banner-logo {
     margin-top: 50px;
     max-width: 25%;
-    margin-left: -13%;
+    margin-left: -12%;
     position: absolute;
     border-style: solid;
     border-color: white;
@@ -67,14 +67,16 @@ html,body
     margin-top: 20px;
     background-position: center;
     background-size: cover;
+    filter: blur(3px);
     opacity: 0.8;
 }
 
 #container-carousel {
-    margin-top: 20%;
-    margin-left: 35%;
+    margin-top: 15%;
+    margin-left: 30%;
     position: absolute;
     box-shadow: 0px 0px 15px 15px #000;
+    max-width: 60%;
 }
 
 #sm-container-img {
@@ -92,19 +94,22 @@ html,body
     font-size: 30px;
     color: white;
     font-family: sans-serif;
-    margin-top: 10px;
+    margin-top: 13px;
+    font-weight: 600;
 }
 
 #gamemode-logo {
     margin-right: 20px;
-    max-width: 10%;
+    max-width: 12%;
+    margin-left: 12px;
 }
 
 #server-content{
     text-decoration: none;
     color: white;
-    font-size: 23px;
+    font-size: 22px;
     font-weight: 700;
+    margin-left: 6px;
 }
 
 .content {
@@ -155,9 +160,23 @@ html,body
 
 /* 1600 * 900 */
 @media all and (min-width: 1367px) and (max-width: 1600px){
+
+    #logo-banner{
+        margin-top: 40px;
+    }
+
+    #banner-logo {
+        margin-top: 50px;
+        max-width: 23%;
+        margin-left: -11%;
+        position: absolute;
+        border-style: solid;
+        border-color: white;
+    }
+
     #container-carousel {
-        margin-top: 20%;
-        margin-left: 35%;
+        margin-top: 13%;
+        margin-left: 30%;
         position: absolute;
         box-shadow: 0px 0px 15px 15px #000;
         max-width: 60%;
@@ -175,22 +194,23 @@ html,body
     }
     
     #gamemode-title{
-        font-size: 30px;
+        font-size: 27px;
         color: white;
         font-family: sans-serif !important;
-        font-weight: 400;
-        margin-top: 10px;
+        font-weight: 600;
+        margin-top: 15px;
     }
     
     #gamemode-logo {
-        margin-right: 20px;
-        max-width: 10%;
+        margin-right: 10px;
+        max-width: 15%;
+        margin-left: 5px;
     }
     
     #server-content{
         text-decoration: none;
         color: white;
-        font-size: 22px;
+        font-size: 20px;
         font-weight: 700;
     }
 }
@@ -198,14 +218,18 @@ html,body
 /* Laptop Mode */
 @media all and (min-width: 720px) and (max-width: 1366px){
     #navbar-logo{
-        max-width: 50%;
+        max-width: 60%;
         margin-left: 150px;
     }
 
     #btn-contact-us{
         font-size: 20px;
         padding: 10px 30px 10px 30px;
-        margin-left: 100px;
+        margin-left: 10px;
+    }
+
+    #logo-banner{
+        margin-top: 40px;
     }
 
     .banner-image {
@@ -226,16 +250,16 @@ html,body
 
     #banner-logo {
         margin-top: 30px;
-        margin-left: -13%;
-        max-width: 25%;
+        margin-left: -11%;
+        max-width: 22%;
         position: absolute;
         border-style: solid;
         border-color: white;
     }
 
     #container-carousel {
-        margin-top: 20%;
-        margin-left: 35%;
+        margin-top: 10%;
+        margin-left: 25%;
         position: absolute;
         box-shadow: 0px 0px 15px 15px #000;
         max-width: 60%;
@@ -253,22 +277,23 @@ html,body
     }
     
     #gamemode-title{
-        font-size: 25px;
+        font-size: 21px;
         color: white;
         font-family: sans-serif !important;
-        font-weight: 400;
-        margin-top: 10px;
+        font-weight: 600;
+        margin-top: 15px;
     }
     
     #gamemode-logo {
-        margin-right: 20px;
-        max-width: 10%;
+        margin-right: 10px;
+        max-width: 15%;
+        margin-left: 2%;
     }
     
     #server-content{
         text-decoration: none;
         color: white;
-        font-size: 17px;
+        font-size: 16px;
         font-weight: 700;
     }
 }
