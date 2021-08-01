@@ -90,8 +90,8 @@
               </p>
             </a>
             </li>
-          <li class="nav-item  menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
             <i class="nav-icon far fa-images"></i>
               <p>
                 Galleries
@@ -106,8 +106,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.admin') }}" class="nav-link">
+          <li class="nav-item menu-open">
+            <a href="{{ route('admin.photos') }}" class="nav-link active">
             <i class="nav-icon fas fa-users-cog"></i>
               <p>
                 Admin & Staff
@@ -138,12 +138,12 @@
       @endif
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 h1-title" style="font-size: 60px;font-family: Nunito;">Galleries</h1>
+            <h1 class="m-0 h1-title" style="font-size: 60px;font-family: Nunito;">Admin & Staff</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" style="color: white; font-size: 20px;font-weight: bold;font-family: Nunito;">Home</a></li>
-              <li class="breadcrumb-item active" style="font-size: 20px;color: #edc124;font-weight: bold;font-family: Nunito;">Galleries</li>
+              <li class="breadcrumb-item active" style="font-size: 20px;color: #edc124;font-weight: bold;font-family: Nunito;">Admin & Staff</li>
               <br>
             </ol>
           </div><!-- /.col -->
@@ -155,32 +155,35 @@
               <div class="col-sm-10">
               <h1 class="m-0 h1-title" style="font-size: 30px;font-family: Nunito;color: white;">Photo</h1>
               </div>
-              <div class="col-sm-2"><a class="button primary new addnew-btn" href="{{ route('admin.upload_photos') }}" style="font-family: inherit; font-weight: bold;font-family: Nunito;">Add New</a></div>
+              <div class="col-sm-2"><a class="button primary new addnew-btn" href="{{ route('admin.upload_admin') }}" style="font-family: inherit; font-weight: bold;font-family: Nunito;">Add New</a></div>
               <!-- End of Button -->
               <!-- Table -->
               <table>
                 <thead>
                   <tr class="table100-head">
                     <th class="column1">#</th>
-                    <th class="column2">Title</th>
-                    <th class="column2">Types</th>
-                    <th class="column2">Gamemodes</th>
-                    <th class="column4">Gambar</th>
+                    <th class="column2">Real Name</th>
+                    <th class="column2">Steam Name</th>
+                    <th class="column4">Social Media</th>
+                    <th class="column4">Role</th>
+                    <th class="column5">Picture</th>
                     <th class="column5">Last Update</th>
                     <th class="column6">Actions</th>
                   </tr>
                 </thead>
                       <tbody>
-                      @foreach ($photo as $photos)
+                      @foreach ($admins as $adminss)
                         <tr class="table100-body">
                           <td class="column1">{{ $loop->iteration }}</td>
-                          <td class="column2">{!! $photos['caption'] !!}</td>
-                          <td class="column2">{!! $photos['types'] !!}</td>
-                          <td class="column2">{!! $photos['gamemodes'] !!}</td>
-                          <td class="column4-1"><img src="/uploads/{{$photos->file_path}}" alt="{{$photos->file_path}}" style="max-width:60%"></td>
-                          <td class="column5">{{ \Carbon\Carbon::parse($photos['updated_at'])->format('j F, Y') }}</td>
+                          <td class="column2">{!! $adminss['real_name'] !!}</td>
+                          <td class="column2">{!! $adminss['steam_name'] !!}</td>
+                          <td class="column2">{!! $adminss['social_media'] !!}</td>
+                          <td class="column2">{!! $adminss['role'] !!}</td>
+                          <td class="column4-1"><img src="/uploads/{{$adminss->photos->file_path}}" alt="" style="max-width:60%"></td>
+                          <td class="column5">{{ \Carbon\Carbon::parse($adminss['updated_at'])->format('j F, Y') }}</td>
                           <td class="column6-1">
-                          <a class="button touch delete" href="{{ route('admin.delete_photos', $photos->id) }}"></a></td>
+                          <a class="button touch edit edit-btn" href="{{ route('admin.admin_edit',$adminss->id) }}"></a>
+                          <a class="button touch delete" href="{{ route('admin.delete_photos', $adminss->id) }}"></a></td>
                         </tr>
                       @endforeach
                       </tbody>
@@ -188,11 +191,9 @@
                     <div class="card-footer clearfix">
                       <ul class="pagination pagination-sm m-o">
                         <span id="table-pagination">
-                        {{$photo->links()}}
                         </span>
                       </ul>
                     </div>
-                    
                     <!-- End of Table -->
             </div>
           </div>

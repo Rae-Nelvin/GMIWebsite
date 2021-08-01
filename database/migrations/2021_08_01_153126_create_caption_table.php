@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePhotosTable extends Migration
+class CreateCaptionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreatePhotosTable extends Migration
      */
     public function up()
     {
-        Schema::create('photos', function (Blueprint $table) {
+        Schema::create('captions', function (Blueprint $table) {
             $table->id();
-            $table->string('caption');
-            $table->string('gamemodes')->nullable();
+            $table->string('title');
+            $table->text('desc');
+            $table->text('link')->nullable();
+            $table->foreignId('photo_id')->references('id')->on('photos');
             $table->foreignId('author_id')->references('id')->on('users');
-            $table->string('types');
-            $table->string('file_path');
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreatePhotosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('photos');
+        Schema::dropIfExists('captions');
     }
 }

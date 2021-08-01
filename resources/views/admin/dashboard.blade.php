@@ -93,13 +93,29 @@
             </li>
           <li class="nav-item">
             <a href="{{ route('admin.photos') }}" class="nav-link">
-            <i class="nav-icon fas fa-dumbbell"></i>
+            <i class="nav-icon far fa-images"></i>
               <p>
-                Photos
+                Galleries
               </p>
             </a>
           </li>
-        </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.news') }}" class="nav-link">
+            <i class="nav-icon far fa-newspaper"></i>
+              <p>
+                News
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.admin') }}" class="nav-link">
+            <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+                Admin & Staff
+              </p>
+            </a>
+          </li>
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -136,13 +152,40 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3 style="margin-bottom: 40px;font-family:Nunito;">Photos<br>
+                <h3 style="margin-bottom: 40px;font-family:Nunito;">Galleries<br>
                 <?php //echo $count_Massworkout ?></h3>
               </div>
               <div class="icon">
-                <i class="fas fa-dumbbell"></i>
+                <i class="far fa-images"></i>
               </div>
               <a href="{{ route('admin.photos') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3 style="margin-bottom: 40px;font-family:Nunito;">News<br>
+                <?php //echo $count_Massworkout ?></h3>
+              </div>
+              <div class="icon">
+                <i class="far fa-newspaper"></i>
+              </div>
+              <a href="{{ route('admin.news') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3 style="margin-bottom: 40px;font-family:Nunito;">Admin & Staff<br>
+                <?php //echo $count_Massworkout ?></h3>
+              </div>
+              <div class="icon">
+                <i class="fas fa-users-cog"></i>
+              </div>
+              <a href="{{ route('admin.admin') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

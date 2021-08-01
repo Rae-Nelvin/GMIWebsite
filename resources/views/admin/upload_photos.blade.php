@@ -93,13 +93,30 @@
             </li>
           <li class="nav-item  menu-open">
             <a href="{{ route('admin.photos') }}" class="nav-link active">
-            <i class="nav-icon fas fa-dumbbell"></i>
+            <i class="far fa-images"></i>
               <p>
-                Photos
+                Galleries
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.news') }}" class="nav-link">
+            <i class="nav-icon far fa-newspaper"></i>
+              <p>
+                News
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('admin.admin') }}" class="nav-link">
+            <i class="nav-icon fas fa-users-cog"></i>
+              <p>
+                Admin & Staff
               </p>
             </a>
           </li>
         </li>
+        </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
@@ -134,7 +151,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="EventForm" class="title-edit" style="font-family: Nunito;">Select Photo Type :</label><br>
-                    <select name="types" id="types">
+                    <select name="gamemodes" id="types">
                       <option value="TTT">TTT</option>
                       <option value="Surf">Surf</option>
                       <option value="Deathrun">Deathrun</option>
@@ -143,8 +160,13 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Title Gambar :</label>
-                    <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="title">
+                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Caption Gambar :</label>
+                    <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="caption">
+                </div>
+                <div class="form-group">
+                  <label for="EventForm" class="title-edit" style="font-family: Nunito;">Apakah Gambar Dibawah Merupakan Background?</label>
+                  <input type="checkbox" id="yes" name="types" value="Background">
+                  <label for="yes">YES</label>
                 </div>
                 <div class="form-group">
                   <table>

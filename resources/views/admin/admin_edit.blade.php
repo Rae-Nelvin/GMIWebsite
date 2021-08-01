@@ -31,6 +31,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Table CSS -->
   <link href="{{ asset ('assets/css/table-css.css') }}" rel="stylesheet">
+  <link href="{{ asset ('assets/css/form-css.css') }}" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed dark-mode">
 <div class="wrapper">
@@ -65,8 +66,8 @@
       <br>
     </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
+     <!-- Sidebar -->
+     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
@@ -90,8 +91,8 @@
               </p>
             </a>
             </li>
-          <li class="nav-item  menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="{{ route('admin.photos') }}" class="nav-link">
             <i class="nav-icon far fa-images"></i>
               <p>
                 Galleries
@@ -107,13 +108,14 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ route('admin.admin') }}" class="nav-link">
+            <a href="{{ route('admin.admin') }}" class="nav-link active">
             <i class="nav-icon fas fa-users-cog"></i>
               <p>
                 Admin & Staff
               </p>
             </a>
           </li>
+        </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -121,83 +123,101 @@
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+   <!-- Content Wrapper. Contains page content -->
+   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-      @if(Session::get('Successful'))
-        <div class="alert alert-success">
-          {{ Session::get('Successful') }}
-        </div>
-      @endif
-      @if(Session::get('Fail'))
+      @if($errors->any())
+        @foreach ($errors->all() as $errors)
         <div class="alert alert-danger">
-          {{ Session::get('Fail') }}
+        {{ $errors }}
         </div>
+        @endforeach
       @endif
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 h1-title" style="font-size: 60px;font-family: Nunito;">Galleries</h1>
+            <h1 class="m-0 h1-title" style="font-size: 60px;font-family: Nunito;">Edit Photos</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" style="color: white; font-size: 20px;font-weight: bold;font-family: Nunito;">Home</a></li>
-              <li class="breadcrumb-item active" style="font-size: 20px;color: #edc124;font-weight: bold;font-family: Nunito;">Galleries</li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" style="color: white; font-size: 20px;font-family:Nunito;">Home</a></li>
+              <li class="breadcrumb-item active" style="font-size: 20px;color: #edc124;font-family:Nunito;">Edit Photos</li>
               <br>
             </ol>
           </div><!-- /.col -->
-        </div>
-            <!-- Photo Table -->
-          <!-- Add New Button -->
+          <!-- Image Table -->
           <div class="card-body bg-custom-1 rounded mt-5">
-            <div class="row" style="margin-left: 10px;margin-right: 10px;">
-              <div class="col-sm-10">
-              <h1 class="m-0 h1-title" style="font-size: 30px;font-family: Nunito;color: white;">Photo</h1>
-              </div>
-              <div class="col-sm-2"><a class="button primary new addnew-btn" href="{{ route('admin.upload_photos') }}" style="font-family: inherit; font-weight: bold;font-family: Nunito;">Add New</a></div>
-              <!-- End of Button -->
-              <!-- Table -->
-              <table>
-                <thead>
-                  <tr class="table100-head">
-                    <th class="column1">#</th>
-                    <th class="column2">Title</th>
-                    <th class="column2">Types</th>
-                    <th class="column2">Gamemodes</th>
-                    <th class="column4">Gambar</th>
-                    <th class="column5">Last Update</th>
-                    <th class="column6">Actions</th>
-                  </tr>
-                </thead>
-                      <tbody>
-                      @foreach ($photo as $photos)
-                        <tr class="table100-body">
+            <table>
+                    <thead>
+                        <tr class="table100-head">
+                        <th class="column1">#</th>
+                        <th class="column2">Real Name</th>
+                        <th class="column2">Steam Name</th>
+                        <th class="column4">Social Media</th>
+                        <th class="column4">Role</th>
+                        <th class="column5">Picture</th>
+                        <th class="column5">Last Update</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($admins as $adminss)
+                    <tr class="table100-body">
                           <td class="column1">{{ $loop->iteration }}</td>
-                          <td class="column2">{!! $photos['caption'] !!}</td>
-                          <td class="column2">{!! $photos['types'] !!}</td>
-                          <td class="column2">{!! $photos['gamemodes'] !!}</td>
-                          <td class="column4-1"><img src="/uploads/{{$photos->file_path}}" alt="{{$photos->file_path}}" style="max-width:60%"></td>
-                          <td class="column5">{{ \Carbon\Carbon::parse($photos['updated_at'])->format('j F, Y') }}</td>
-                          <td class="column6-1">
-                          <a class="button touch delete" href="{{ route('admin.delete_photos', $photos->id) }}"></a></td>
+                          <td class="column2">{!! $adminss['real_name'] !!}</td>
+                          <td class="column2">{!! $adminss['steam_name'] !!}</td>
+                          <td class="column2">{!! $adminss['social_media'] !!}</td>
+                          <td class="column2">{!! $adminss['role'] !!}</td>
+                          <td class="column4-1"><img src="/uploads/{{$adminss->photos->file_path}}" alt="" style="max-width:60%"></td>
+                          <td class="column5">{{ \Carbon\Carbon::parse($adminss['updated_at'])->format('j F, Y') }}</td>
                         </tr>
-                      @endforeach
-                      </tbody>
-                    </table>
-                    <div class="card-footer clearfix">
-                      <ul class="pagination pagination-sm m-o">
-                        <span id="table-pagination">
-                        {{$photo->links()}}
-                        </span>
-                      </ul>
+                    @endforeach
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          <!-- End of Image Table --> 
+          <!-- Form -->
+          <div class="row mb-2">
+          <div class="card-body bg-custom-1 rounded mt-5">
+          <form action="{{ route('admin.adminedit') }}" method="POST" enctype="multipart/form-data" id="form">
+                @csrf
+                <input type="hidden" name="types" value="Admin">
+                <input type="hidden" name="prevpid" value="{{$adminss->photos->id}}">
+                <input type="hidden" name="id" value="{{ $adminss['id'] }}">
+                <div class="form-group">
+                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Steam Name :</label>
+                    <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="steam_name" style="max-width: 40%;">
+                </div>
+                <div class="form-group">
+                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Real Name :</label>
+                    <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="real_name" style="max-width: 40%;">
+                </div>
+                <div class="form-group">
+                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Link Instagram (opsional) :</label>
+                    <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="social_media" style="max-width: 40%;">
+                </div>
+                <div class="form-group">
+                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Role GMI :</label>
+                    <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="role" style="max-width: 40%;">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile" style="font-family: Nunito;" class="title-edit">Images input :</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="images[]" onchange="loadFile(event)" size="60">
+                        <label class="custom-file-label bg-white" for="inputGroupFile02" style="max-width: 40%;">Choose Image</label>
+                      </div>
                     </div>
-                    
-                    <!-- End of Table -->
-            </div>
+                    <img id="output" style="padding:10px; max-width: 25%;"/>
+                  </div>
+                <button class="btn btn-success" style="font-family: Nunito;font-weight: bold;">Submit<input type="submit" class="button btn-success d-none" /></button>
+            </form>
           </div>
+          <!-- End of Form -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
+    </div>
     <!-- /.content-header -->
 
   <!-- Control Sidebar -->
@@ -242,5 +262,19 @@
 <script src="{{ asset('assets/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
+<!-- Image Preview & Add More Button -->
+<script type="text/javascript">
+
+var loadFile =  function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+  };
+
+  $('#inputGroupFile02').on('change',function(){
+   var fileName = $(this).val();
+  $(this).next('.custom-file-label').html(fileName);
+})
+
+</script>
 </body>
 </html>

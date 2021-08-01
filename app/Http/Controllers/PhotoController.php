@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Photos;
 use Session;
 use App\Models\User;
-use App\Models\Posts;
+use App\Models\Admin;
+use App\Models\Captions;
 use Illuminate\Support\Facades\Storage;
 
 class PhotoController extends Controller
@@ -17,49 +18,172 @@ class PhotoController extends Controller
         return view('admin.upload_photos',['admin'=>$admin]);
     }
 
-    function check($types,$id){
-        
-        $check = Photos::where([['types','=',$types],['is_key','=',1]])->first();
-        $photos = Photos::where('types',$types)->orderBy('id','DESC')->get()->first();
-
-        if($check == NULL)
-        {
-            $photos->is_key = true;
-            $photos->save();
-        }
-
-        else{
-            $check->is_key = false;
-            $photos->is_key = true;
-            $check->save();
-            $photos->save();
-        }
-    }
-
     function uploadphotos(Request $request){
         $request->validate([
-            'title' => 'required',
+            'caption' => 'required',
+            'gamemodes' => 'required',
             'images' => 'required'
         ]);
+
+        if(!$request->types){
+            $types = "Screenshoot";
+            $gamemodes = $request->gamemodes;
+        }else{
+            $types = $request->types;
+            $gamemodes = "Background";
+        }
 
         $id = Session::get('LoggedUser');
         $files = $request->file('images');
 
         foreach($files as $file){
-            $imageName = $request->types.'/'.$file->getClientOriginalName();
-            $file->move(public_path('uploads/'. $request->types), $imageName);
+            $imageName = $types .'/'. $gamemodes . '/'.  $file->getClientOriginalName();
+            $file->move(public_path('uploads/'. $types . '/' . $gamemodes), $imageName);
 
             Photos::create([
                 'author_id' => $id,
-                'title' => $request->title,
-                'types' => $request->types,
+                'caption' => $request->caption,
+                'types' => $types,
+                'gamemodes' => $gamemodes,
                 'file_path' => $imageName
             ]);
         }
 
-        $this->check($request->types,$id);
-
         return redirect('admin/photos')->with('Successful', 'Your Photo has been uploaded successfully!!');
+    }
+
+    function upload_admin(){
+        $id = Session::get('LoggedUser');
+        $admin = User::where('id',$id)->get(['name']);
+        return view('admin.upload_admin',['admin'=>$admin]);
+    }
+
+    function uploadadmin(Request $request){
+        $request->validate([
+            'steam_name' => 'required',
+            'real_name' => 'required',
+            'images' => 'required',
+            'types' => 'required'
+        ]);
+
+        $author_id = Session::get('LoggedUser');
+        $files = $request->file('images');
+
+        foreach($files as $file){
+            $imageName = $request->types . '/'.  $file->getClientOriginalName();
+            $file->move(public_path('uploads/'. $request->types . '/'), $imageName);
+
+            Photos::create([
+                'caption' => $request->steam_name,
+                'author_id' => $author_id,
+                'types' => $request->types,
+                'file_path' => $imageName
+            ]);
+
+            $id = Photos::select("id")->where("file_path","=",$imageName)->first();
+
+            Admin::create([
+                'steam_name' => $request->steam_name,
+                'real_name' => $request->real_name,
+                'social_media' => $request->social_media,
+                'role' => $request->role,
+                'photo_id' => $id->id,
+                'author_id' => $author_id
+            ]);
+        }
+
+        return redirect('admin/admin')->with('Successful', 'Your Photo has been uploaded successfully!!');
+    }
+
+    function admin_edit($id){
+        $ids = Session::get('LoggedUser');
+        $admin = User::where('id',$ids)->get(['name']);
+        $admins = Admin::where('id',$id)->get();
+        return view('admin.admin_edit',['admin'=>$admin,'admins' => $admins]);
+    }
+
+    function adminedit(Request $request){
+        $request->validate([
+            'steam_name' => 'required',
+            'real_name' => 'required',
+            'images' => 'required',
+            'types' => 'required',
+            'prevpid' => 'required'
+        ]);
+
+        $author_id = Session::get('LoggedUser');
+        $files = $request->file('images');
+
+        foreach($files as $file){
+            $imageName = $request->types . '/'.  $file->getClientOriginalName();
+            $file->move(public_path('uploads/'. $request->types . '/'), $imageName);
+
+            $updatephotos = Photos::where('id',$request->prevpid)
+            ->update([
+                'caption' => $request->steam_name,
+                'author_id' => $author_id,
+                'types' => $request->types,
+                'file_path' => $imageName
+            ]);
+
+            $id = Photos::select("id")->where("file_path","=",$imageName)->first();
+
+            $edit = Admin::where('id',$request->id)
+                ->update([
+                'steam_name' => $request->steam_name,
+                'real_name' => $request->real_name,
+                'social_media' => $request->social_media,
+                'role' => $request->role,
+                'photo_id' => $id->id,
+                'author_id' => $author_id
+            ]);
+        }
+        
+            return redirect('admin/admin')->with('Successful', 'Your Photo has been updated successfully!!');
+    }
+
+    function upload_news(){
+        $id = Session::get('LoggedUser');
+        $admin = User::where('id',$id)->get(['name']);
+        return view('admin.upload_news',['admin'=>$admin]);
+    }
+
+    function uploadnews(Request $request){
+        $request->validate([
+            'title' => 'required',
+            'desc' => 'required',
+            'link' => 'required',
+            'images' => 'required'
+        ]);
+
+        $author_id = Session::get('LoggedUser');
+        $files = $request->file('images');
+        $types = "News";
+
+        foreach($files as $file){
+            $imageName = $types . '/'.  $file->getClientOriginalName();
+            $file->move(public_path('uploads/'. $types . '/'), $imageName);
+
+            Photos::create([
+                'caption' => $request->title,
+                'author_id' => $author_id,
+                'types' => $types,
+                'file_path' => $imageName
+            ]);
+
+            $id = Photos::select("id")->where("file_path","=",$imageName)->first();
+
+            Captions::create([
+                'title' => $request->title,
+                'desc' => $request->desc,
+                'link' => $request->link,
+                'photo_id' => $id->id,
+                'author_id' => $author_id
+            ]);
+            
+        }
+
+        return redirect('admin/news')->with('Successful', 'Your Photo has been uploaded successfully!!');
     }
 
     function delete($id){

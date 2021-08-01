@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Photos extends Model
+class Admin extends Model
 {
     use HasFactory;
 
-    protected $table = 'photos';
+    protected $table = 'admins';
     protected $primaryKey = 'id';
     
     /**
@@ -19,19 +19,15 @@ class Photos extends Model
      */
 
     protected $fillable = [
-        'caption',
-        'gamemodes',
-        'types',
+        'steam_name',
+        'real_name',
+        'social_media',
+        'photo_id',
         'author_id',
-        'file_path'
+        'role'
     ];
 
-    public function Captions()
-    {
-        return $this->belongsTo(Captions::class,'photo_id','id');
-    }
-    public function Admin()
-    {
-        return $this->belongsTo(Admin::class,'photo_id','id');
+    public function photos(){
+        return $this->hasOne(Photos::class,'id','photo_id');
     }
 }

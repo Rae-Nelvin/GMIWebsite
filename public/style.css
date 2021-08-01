@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:&display=swap');
 
 html,body
 {
@@ -53,10 +55,19 @@ html,body
 #banner-logo {
     margin-top: 50px;
     max-width: 25%;
-    margin-left: -12%;
+    margin-left: -13%;
     position: absolute;
     border-style: solid;
     border-color: white;
+}
+
+#logo-banner h1 {
+    font-weight: 900;
+    font-size: 65px;
+    font-family: 'Monsterrat', sans-serif;
+    background: -webkit-linear-gradient(red, #fff, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .carousel-item {
@@ -119,8 +130,9 @@ html,body
 .title{
     color: white;
     font-weight: 900;
-    font-size: 60px;
-    font-family: sans-serif;
+    font-size: 65px;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 3px 5px #000;
 }
 
 .bg-darker{
@@ -140,6 +152,7 @@ html,body
 
 #rules-content {
     padding-top: 10%;
+    margin-left: 3%;
 }
 
 #rules-list {
@@ -149,13 +162,175 @@ html,body
 }
 
 .text-box {
+    max-width: 100%;
     background: rgba(0, 0, 0, 0.7);
     padding: 20px 50px 20px 50px;
+    padding-right: 10px;
+    margin-top: 8%;
 }
 
 .no-padding{
     padding: 0px !important;
     margin: 0px !important;
+}
+
+#admin {
+    background-color: #0c0d0f;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    position: relative;
+    padding-bottom: 5%;
+    margin-top: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#admin-gallery{
+    overflow: hidden;
+    margin-top: 10%;
+}
+
+.admin-container{
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    margin-right: 10px !important;
+}
+
+#h1-admin{
+    color: #fff;
+    padding-top: 5%;
+    margin-bottom: 3%;
+}
+
+.img-hover-zoom--brightness img {
+    transition: transform 1s, filter 1.5s ease-in-out;
+    transform-origin: center center;
+    filter: brightness(100%);
+}
+  
+  /* The Transformation */
+.img-hover-zoom--brightness:hover img {
+    filter: brightness(30%);
+    transform: scale(1.1) !important;
+}
+
+.centered {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    width: 100%;
+}
+
+.img-hover-zoom--brightness:hover .centered{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1.5s ease-in-out;
+}
+
+#row-admingallery{
+    display: flex;
+    height: 100%;
+    margin: 0 15vw;
+    max-width: 80%;
+}
+
+/*
+#row-admingallery{
+    display: flex;
+    height: 100%;
+    margin: 0 -6vw;
+}*/
+
+#row-admingallery .admin-container{
+    flex: 1;;
+    height: 100%;
+    transform: skew(-15deg);
+    overflow: hidden;
+}
+
+#row-admingallery .admin-container img {
+    width: 140%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transform: skew(15deg);
+    margin: 0 -20%;
+}
+
+.admin-name{
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 25px;
+}
+
+.carousel-rules-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 50px;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-rules-container-h1 {
+    font-weight: 900;
+    font-size: 65px;
+    font-family: 'Poppins', sans-serif;
+    color: black;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 20%;
+}
+
+.carousel-rules-container-p {
+    color: black;
+    font-size: 17px;
+    margin-left: 5%;
+    margin-right: 20%;
+}
+
+
+#myCarousel2 {
+    max-width: 100%;
+    border-radius: 0px 0px 20px 20px;
+    overflow: hidden;
+    max-height: 62vh;
+}
+
+#myCarousel2 .carousel-item {
+    min-height: 60vh;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    position: relative;
+    margin-top: 20px;
+    background-position: center;
+    background-size: cover;
+    filter: blur(0px);
+    opacity: 1;
+}
+
+#vline{
+    background: #fff;
+    margin-top: 40px;
+    padding-top: 0px;
+    padding-right: 2px;
+    margin-bottom: 25px;
+}
+
+.overlay-image{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.8;
 }
 
 /* 1600 * 900 */

@@ -28,8 +28,16 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::prefix('admin')->group(function(){
         Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('admin.dashboard');
         Route::get('/photos',[AdminController::class, 'photos'])->name('admin.photos');
+        Route::get('/news',[AdminController::class, 'news'])->name('admin.news');
+        Route::get('/admin',[AdminController::class, 'admin'])->name('admin.admin');
         Route::get('/upload_photos',[PhotoController::class, 'upload_photos'])->name('admin.upload_photos');
         Route::post('/uploadphotos', [PhotoController::class, 'uploadphotos'])->name('admin.uploadphotos');
+        Route::get('/upload_admin',[PhotoController::class, 'upload_admin'])->name('admin.upload_admin');
+        Route::post('/uploadadmin', [PhotoController::class, 'uploadadmin'])->name('admin.uploadadmin');
+        Route::get('/admin_edit/{id}',[PhotoController::class, 'admin_edit'])->name('admin.admin_edit');
+        Route::post('/adminedit', [PhotoController::class, 'adminedit'])->name('admin.adminedit');
+        Route::get('/upload_news',[PhotoController::class, 'upload_news'])->name('admin.upload_news');
+        Route::post('/uploadnews', [PhotoController::class, 'uploadnews'])->name('admin.uploadnews');
         Route::get('/delete/{id}', [PhotoController::class, 'delete'])->name('admin.delete_photos');
     });
 });

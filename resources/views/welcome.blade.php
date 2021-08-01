@@ -26,7 +26,7 @@
             </div>
         </nav>
         <div id="logo-banner" class="text-center">
-            <h1 class="title" style="margin-left: 1%;">Garry's Mod Indonesia<br> Revived</h1>
+            <h1 style="margin-left: 1%;">GARRY'S MOD INDONESIA<br> REVIVED</h1>
             <img src="{{ asset('assets/images/gmilogo/gmi_recreate.png') }}" alt="banner-logo" class="rounded-circle" id="banner-logo">
         </div>
     </div>
@@ -88,25 +88,69 @@
 
     <!-- Start of Rules -->
     <div id="rules">
-        <div class="container" id="rules-content">
-            <div class="text-box">
-                <h1 class="title">RULES</h1>
-                <ul id="rules-list">
-                    <li>Bersikap baik dengan player lain.</li>
-                    <li>Kurangi penggunaan kata - kata yang tidak pantas.</li>
-                    <li>Dilarang melakukan hal Rasis / Offensive!</li>
-                    <li>Dilarang Ghosting / Metagaming (termasuk Discord). Warned 3x = BANNED!</li>
-                    <li>Dilarang Spamming dalam bentuk apapun!</li>
-                    <li>Dilarang melakukan Iklan Server lain, terkecuali sudah izin kepada Admin / Staff.</li>
-                    <li>Dilarang Trolling / Nge-meme berlebihan. Ini bukan 4chan nak.</li>
-                    <li>Dilarang kelamaan duduk di kursi "Spectator'.</li>
-                </ul>
+        <div class="container-fluid" id="rules-content">
+            <div class="row">
+                <div class="col-7">
+                    <div id="myCarousel2" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="overlay-image"  style="background-image:url(/uploads/admindp/mute.png)"></div>
+                                <div class="carousel-rules-container">
+                                    <h1 class="carousel-rules-container-h1">Headline</h1>
+                                    <p class="carousel-rules-container-p">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio, officiis suscipit eligendi et iure voluptatibus aspernatur assumenda dolorum deserunt rem temporibus maiores, similique minus fuga?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#myCarousel2" class="carousel-control-prev" role="button" data-slide-to="prev" style="margin-left: -5%"><span class="sr-only">Previous</span><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
+                        <a href="#myCarousel2" class="carousel-control-next" role="button"  style="margin-right: -5%"  onclick="$('#myCarousel2').carousel('next')"><span class="sr-only">Next</span><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
+                    </div>
+                </div>
+                <div id="vline"></div>
+                <div class="col-4">
+                    <div class="text-box">
+                        <h1 class="title">RULES</h1>
+                        <ul id="rules-list">
+                            <li>Bersikap baik dengan player lain.</li>
+                            <li>Kurangi penggunaan kata - kata yang tidak pantas.</li>
+                            <li>Dilarang melakukan hal Rasis / Offensive!</li>
+                            <li>Dilarang Ghosting / Metagaming (termasuk Discord). Warned 3x = BANNED!</li>
+                            <li>Dilarang Spamming dalam bentuk apapun!</li>
+                            <li>Dilarang melakukan Iklan Server lain, terkecuali sudah izin kepada Admin / Staff.</li>
+                            <li>Dilarang Trolling / Nge-meme berlebihan. Ini bukan 4chan nak.</li>
+                            <li>Dilarang kelamaan duduk di kursi "Spectator'.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!-- End of Rules -->
 
     <!-- Start of Admin & Staff -->
+    
+    <div id="admin">
+        <div class="container-fluid">
+            <div class="text-center" id="h1-admin">
+                <h1 class="title">INTRODUCING US</h1>
+            </div>       
+            <div id="admin-gallery container-fluid" >
+                <div class="row" id="row-admingallery">
+                    @foreach ($admin as $admin)
+                        <div class="col-3 no-padding admin-container img-hover-zoom--brightness">
+                            <a href="{{ $admin['instagram'] }}"><img src="/uploads/admindp{{ $admin->file_path }}" alt="Display_pict" class="admin-picts"></a>
+                            <div class="centered text-center">
+                                <h1 class="admin-name no-padding">{{ $admin['real_name'] }} <br><br>"{{ $admin['steam_name'] }}" </h1><br>
+
+                                <h3 style="font-family: 'Monsterrat', sans-serif;font-size: 25px;font-weight:600;color: gold">{{ $admin['role'] }}</h3>
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="col-3 no-padding admin-container img-hover-zoom--brightness"><img src="{{ asset('assets/images/Displaypict/mute.png') }}" alt="Display_pict" class="admin-picts"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
 
     <!-- End of Admin & Staff -->
 

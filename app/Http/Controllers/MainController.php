@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Photos;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -15,10 +16,11 @@ class MainController extends Controller
         $image2 = Photos::where('is_key',1)->where('types','!=','TTT')->get();
         $images1 = Photos::where('is_key',0)->where('types','TTT')->orderBy('id','DESC')->take(4)->get();
         $images2 = Photos::where('is_key',0)->where('types','!=','TTT')->orderBy('id','DESC')->get();
-
+        $admin = Admin::all();
 
         return view('welcome',['image1' => $image1,'image2' => $image2,
-                                'images1' => $images1, 'images2' => $images2]);
+                                'images1' => $images1, 'images2' => $images2,
+                                'admin'=>$admin]);
     }
 
     function login(){
