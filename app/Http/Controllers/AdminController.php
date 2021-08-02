@@ -17,7 +17,11 @@ class AdminController extends Controller
     function dashboard(){
         $id = Session::get('LoggedUser');
         $admin = User::where('id', $id)->get(['name']);
-        return view('admin.dashboard',['admin'=>$admin]);
+        $count_photos = Photos::count();
+        $count_admin = Photos::where("types","=","Admin")->count();
+        $count_news = Photos::where("types","=","News")->count();
+        return view('admin.dashboard',['admin'=>$admin,'count_photos'=>$count_photos,
+                                        'count_admin'=>$count_admin,'count_news'=>$count_news]);
     }
 
     function photos(){

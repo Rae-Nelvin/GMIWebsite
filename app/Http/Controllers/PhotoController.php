@@ -25,29 +25,66 @@ class PhotoController extends Controller
             'images' => 'required'
         ]);
 
-        if(!$request->types){
+        if($request->types == "Screenshoot"){
             $types = "Screenshoot";
             $gamemodes = $request->gamemodes;
-        }else{
+        }else if($request->types == "Background"){
             $types = $request->types;
-            $gamemodes = "Background";
+            $request->validate([
+                'images' => 'max:1'
+            ]);
         }
 
         $id = Session::get('LoggedUser');
         $files = $request->file('images');
+        $check = Photos::where("types","=","Background")->where("gamemodes","=",$request->gamemodes)->first();
+    
+        if($request->types == "Screenshoot"){
+                foreach($files as $file){
+                $imageName = $types .'/'. $request->gamemodes . '/'.  $file->getClientOriginalName();
+                $file->move(public_path('uploads/'. $types . '/' . $request->gamemodes), $imageName);
 
-        foreach($files as $file){
-            $imageName = $types .'/'. $gamemodes . '/'.  $file->getClientOriginalName();
-            $file->move(public_path('uploads/'. $types . '/' . $gamemodes), $imageName);
-
-            Photos::create([
-                'author_id' => $id,
-                'caption' => $request->caption,
-                'types' => $types,
-                'gamemodes' => $gamemodes,
-                'file_path' => $imageName
-            ]);
+                Photos::create([
+                    'author_id' => $id,
+                    'caption' => $request->caption,
+                    'types' => $types,
+                    'gamemodes' => $gamemodes,
+                    'file_path' => $imageName
+                ]);
+            }
+        }else if($request->types == "Background"){
+            if($check == NULL){
+                foreach($files as $file){
+                    $imageName = $request->gamemodes . $file->getClientOriginalName();
+                    $imageURL = $types . '/' . $request->gamemodes . $file->getClientOriginalName();
+                    $file->move(public_path('uploads/'. $types), $imageName);
+    
+                    Photos::create([
+                        'author_id' => $id,
+                        'caption' => $request->caption,
+                        'types' => $types,
+                        'gamemodes' => $request->gamemodes,
+                        'file_path' => $imageURL
+                    ]);
+                }
+            }else{
+                foreach($files as $file){
+                    $imageName =  $request->gamemodes . $file->getClientOriginalName();
+                    $imageURL = $types . '/' . $request->gamemodes . $file->getClientOriginalName();
+                    $file->move(public_path('uploads/'. $types), $imageName);
+    
+                    Photos::where("id","=",$check->id)
+                    ->update([
+                        'author_id' => $id,
+                        'caption' => $request->caption,
+                        'types' => $types,
+                        'gamemodes' => $request->gamemodes,
+                        'file_path' => $imageURL
+                    ]);
+                }
+            }
         }
+        
 
         return redirect('admin/photos')->with('Successful', 'Your Photo has been uploaded successfully!!');
     }
@@ -80,7 +117,7 @@ class PhotoController extends Controller
                 'file_path' => $imageName
             ]);
 
-            $id = Photos::select("id")->where("file_path","=",$imageName)->first();
+            $id = Photos::select("id")->where("caption","=",$request->steam_name)->first();
 
             Admin::create([
                 'steam_name' => $request->steam_name,
@@ -126,7 +163,7 @@ class PhotoController extends Controller
                 'file_path' => $imageName
             ]);
 
-            $id = Photos::select("id")->where("file_path","=",$imageName)->first();
+            $id = Photos::select("id")->where("caption","=",$request->steam_name)->first();
 
             $edit = Admin::where('id',$request->id)
                 ->update([

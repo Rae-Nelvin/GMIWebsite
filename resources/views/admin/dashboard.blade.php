@@ -153,7 +153,7 @@
             <div class="small-box bg-success">
               <div class="inner">
                 <h3 style="margin-bottom: 40px;font-family:Nunito;">Galleries<br>
-                <?php //echo $count_Massworkout ?></h3>
+                <?php echo $count_photos ?></h3>
               </div>
               <div class="icon">
                 <i class="far fa-images"></i>
@@ -166,7 +166,7 @@
             <div class="small-box bg-info">
               <div class="inner">
                 <h3 style="margin-bottom: 40px;font-family:Nunito;">News<br>
-                <?php //echo $count_Massworkout ?></h3>
+                <?php echo $count_news ?></h3>
               </div>
               <div class="icon">
                 <i class="far fa-newspaper"></i>
@@ -180,7 +180,7 @@
             <div class="small-box bg-danger">
               <div class="inner">
                 <h3 style="margin-bottom: 40px;font-family:Nunito;">Admin & Staff<br>
-                <?php //echo $count_Massworkout ?></h3>
+                <?php echo $count_admin ?></h3>
               </div>
               <div class="icon">
                 <i class="fas fa-users-cog"></i>

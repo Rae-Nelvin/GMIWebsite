@@ -151,7 +151,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="EventForm" class="title-edit" style="font-family: Nunito;">Select Photo Type :</label><br>
-                    <select name="gamemodes" id="types">
+                    <select name="gamemodes" id="gamemodes">
                       <option value="TTT">TTT</option>
                       <option value="Surf">Surf</option>
                       <option value="Deathrun">Deathrun</option>
@@ -164,9 +164,11 @@
                     <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="caption">
                 </div>
                 <div class="form-group">
-                  <label for="EventForm" class="title-edit" style="font-family: Nunito;">Apakah Gambar Dibawah Merupakan Background?</label>
-                  <input type="checkbox" id="yes" name="types" value="Background">
-                  <label for="yes">YES</label>
+                  <label for="EventForm" class="title-edit" style="font-family: Nunito;">Type of Pictures: </label>
+                  <input type="radio" id="html" name="types" value="Background">
+                  Background (Only 1 Photos at a time)
+                  <input type="radio" id="html" name="types" value="Screenshoot">
+                  Screenshots
                 </div>
                 <div class="form-group">
                   <table>

@@ -6,21 +6,26 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Photos;
 use App\Models\Admin;
+use App\Models\Captions;
 use Illuminate\Support\Facades\Hash;
 
 
 class MainController extends Controller
 {
     function index(){
-        $image1 = Photos::where('is_key',1)->where('types','TTT')->take(1)->get();
-        $image2 = Photos::where('is_key',1)->where('types','!=','TTT')->get();
-        $images1 = Photos::where('is_key',0)->where('types','TTT')->orderBy('id','DESC')->take(4)->get();
-        $images2 = Photos::where('is_key',0)->where('types','!=','TTT')->orderBy('id','DESC')->get();
-        $admin = Admin::all();
+        $image1 = Photos::where('types','=','Background')->where('gamemodes','=','TTT')->get();
+        $image2 = Photos::where('types','=','Background')->where('gamemodes','!=','TTT')->get();
+        $images1 = Photos::where('types','TTT')->orderBy('id','DESC')->take(4)->get();
+        $images2 = Photos::where('types','!=','TTT')->orderBy('id','DESC')->get();
+        $admin = Admin::with('photos')->get();
+        $news1 = Captions::orderBy('id','ASC')->with('photos')->get();
+        $news2 = Captions::orderBy('id','DESC')->with('photos')->get();
+
 
         return view('welcome',['image1' => $image1,'image2' => $image2,
                                 'images1' => $images1, 'images2' => $images2,
-                                'admin'=>$admin]);
+                                'admin'=>$admin,'news1' => $news1,
+                                'news2'=>$news2]);
     }
 
     function login(){

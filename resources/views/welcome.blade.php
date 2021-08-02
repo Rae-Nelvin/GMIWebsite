@@ -46,7 +46,7 @@
         <div class="carousel-inner">
             @foreach ($image1 as $image1)
             <div class="carousel-item active element" style="background-image:url(/uploads/{{$image1->file_path}})">
-            <p id="types" style="display: none">{{ $image1['types'] }}</p>
+            <p id="types" style="display: none">{{ $image1['gamemodes'] }}</p>
                 @foreach ($images1 as $images1)
                 <p class="picts1" style="display: none;">/uploads/{{ $images1['file_path'] }} </p>
                 @endforeach
@@ -54,7 +54,7 @@
             @endforeach
             @foreach ($image2 as $image2)
             <div class="carousel-item" style="background-image:url(/uploads/{{$image2->file_path}})">
-            <p id="types" style="display: none">{{ $image2['types'] }}</p>
+            <p id="types" style="display: none">{{ $image2['gamemodes'] }}</p>
             </div>
             @endforeach
             @foreach ($images2 as $images2)
@@ -93,13 +93,15 @@
                 <div class="col-7">
                     <div id="myCarousel2" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="overlay-image"  style="background-image:url(/uploads/admindp/mute.png)"></div>
+                            @foreach ($news1 as $key => $news1)
+                            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                                <div class="overlay-image"  style="background-image:url(uploads/{{$news1->photos->file_path}}"></div>
                                 <div class="carousel-rules-container">
-                                    <h1 class="carousel-rules-container-h1">Headline</h1>
-                                    <p class="carousel-rules-container-p">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio, officiis suscipit eligendi et iure voluptatibus aspernatur assumenda dolorum deserunt rem temporibus maiores, similique minus fuga?</p>
+                                    <h1 class="carousel-rules-container-h1">{{ $news1['title'] }}</h1>
+                                    <p class="carousel-rules-container-p">{{ $news1['desc'] }}</p>
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                         <a href="#myCarousel2" class="carousel-control-prev" role="button" data-slide-to="prev" style="margin-left: -5%"><span class="sr-only">Previous</span><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
                         <a href="#myCarousel2" class="carousel-control-next" role="button"  style="margin-right: -5%"  onclick="$('#myCarousel2').carousel('next')"><span class="sr-only">Next</span><span class="carousel-control-next-icon" aria-hidden="true"></span></a>
@@ -137,7 +139,7 @@
                 <div class="row" id="row-admingallery">
                     @foreach ($admin as $admin)
                         <div class="col-3 no-padding admin-container img-hover-zoom--brightness">
-                            <a href="{{ $admin['instagram'] }}"><img src="/uploads/admindp{{ $admin->file_path }}" alt="Display_pict" class="admin-picts"></a>
+                            <a href="{{ $admin['instagram'] }}"><img src="/uploads/{{ $admin->photos->file_path }}" alt="Display_pict" class="admin-picts"></a>
                             <div class="centered text-center">
                                 <h1 class="admin-name no-padding">{{ $admin['real_name'] }} <br><br>"{{ $admin['steam_name'] }}" </h1><br>
 
@@ -145,7 +147,6 @@
                             </div>
                         </div>
                     @endforeach
-                    <div class="col-3 no-padding admin-container img-hover-zoom--brightness"><img src="{{ asset('assets/images/Displaypict/mute.png') }}" alt="Display_pict" class="admin-picts"></div>
                 </div>
             </div>
             
