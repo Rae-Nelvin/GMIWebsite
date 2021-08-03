@@ -30,6 +30,7 @@ Route::group(['middleware'=>['AuthCheck']], function(){
         Route::get('/photos',[AdminController::class, 'photos'])->name('admin.photos');
         Route::get('/news',[AdminController::class, 'news'])->name('admin.news');
         Route::get('/admin',[AdminController::class, 'admin'])->name('admin.admin');
+        Route::get('/link',[AdminController::class, 'link'])->name('admin.link');
         Route::get('/upload_photos',[PhotoController::class, 'upload_photos'])->name('admin.upload_photos');
         Route::post('/uploadphotos', [PhotoController::class, 'uploadphotos'])->name('admin.uploadphotos');
         Route::get('/upload_admin',[PhotoController::class, 'upload_admin'])->name('admin.upload_admin');
@@ -38,6 +39,10 @@ Route::group(['middleware'=>['AuthCheck']], function(){
         Route::post('/adminedit', [PhotoController::class, 'adminedit'])->name('admin.adminedit');
         Route::get('/upload_news',[PhotoController::class, 'upload_news'])->name('admin.upload_news');
         Route::post('/uploadnews', [PhotoController::class, 'uploadnews'])->name('admin.uploadnews');
-        Route::get('/delete/{id}', [PhotoController::class, 'delete'])->name('admin.delete_photos');
+        Route::get('/upload_link',[PhotoController::class, 'upload_link'])->name('admin.upload_link');
+        Route::post('/uploadlink', [PhotoController::class, 'uploadlink'])->name('admin.uploadlink');
+        Route::get('/delete/photos/{id}', [PhotoController::class, 'deletephotos'])->name('admin.delete_photos');
+        Route::get('/delete/admin/{id}', [PhotoController::class, 'deleteadmin'])->name('admin.delete_admin');
+        Route::get('/delete/captions/{id}', [PhotoController::class, 'deletecaptions'])->name('admin.delete_captions');
     });
 });

@@ -115,10 +115,10 @@ html,body
     margin-left: 12px;
 }
 
-#server-content{
+.server-content{
     text-decoration: none;
     color: white;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
     margin-left: 6px;
 }
@@ -239,13 +239,6 @@ html,body
     max-width: 80%;
 }
 
-/*
-#row-admingallery{
-    display: flex;
-    height: 100%;
-    margin: 0 -6vw;
-}*/
-
 #row-admingallery .admin-container{
     flex: 1;;
     height: 100%;
@@ -274,21 +267,21 @@ html,body
     left: 0;
     right: 0;
     padding-bottom: 50px;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .carousel-rules-container-h1 {
     font-weight: 900;
     font-size: 65px;
     font-family: 'Poppins', sans-serif;
-    color: black;
+    color: white;
     margin-top: 1%;
     margin-left: 5%;
     margin-right: 20%;
 }
 
 .carousel-rules-container-p {
-    color: black;
+    color: white;
     font-size: 17px;
     margin-left: 5%;
     margin-right: 20%;
@@ -382,7 +375,7 @@ html,body
         margin-left: 5px;
     }
     
-    #server-content{
+    .server-content{
         text-decoration: none;
         color: white;
         font-size: 20px;
@@ -465,7 +458,7 @@ html,body
         margin-left: 2%;
     }
     
-    #server-content{
+    .server-content{
         text-decoration: none;
         color: white;
         font-size: 16px;

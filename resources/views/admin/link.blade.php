@@ -35,7 +35,6 @@
 <body class="hold-transition sidebar-mini layout-fixed dark-mode">
 <div class="wrapper">
 
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
     <!-- Left navbar links -->
@@ -85,85 +84,77 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
+      @if(Session::get('Successful'))
+        <div class="alert alert-success">
+          {{ Session::get('Successful') }}
+        </div>
+      @endif
+      @if(Session::get('Fail'))
+        <div class="alert alert-danger">
+          {{ Session::get('Fail') }}
+        </div>
+      @endif
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 h1-title" style="font-size: 40px;font-family: Nunito;font-weight: bold;">Dashboard</h1>
+            <h1 class="m-0 h1-title" style="font-size: 60px;font-family: Nunito;">Links & IP</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" style="color: white; font-size: 20px;font-family: Nunito;font-weight: bold;">Home</a></li>
-              <li class="breadcrumb-item active" style="font-size: 20px;color: #edc124;font-family: Nunito;font-weight: bold">Dashboard</li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" style="color: white; font-size: 20px;font-weight: bold;font-family: Nunito;">Home</a></li>
+              <li class="breadcrumb-item active" style="font-size: 20px;color: #edc124;font-weight: bold;font-family: Nunito;">Links & IP</li>
               <br>
             </ol>
           </div><!-- /.col -->
+        </div>
+            <!-- Photo Table -->
+          <!-- Add New Button -->
+          <div class="card-body bg-custom-1 rounded mt-5">
+            <div class="row" style="margin-left: 10px;margin-right: 10px;">
+              <div class="col-sm-10">
+              <h1 class="m-0 h1-title" style="font-size: 30px;font-family: Nunito;color: white;">Table</h1>
+              </div>
+              <div class="col-sm-2"><a class="button primary new addnew-btn" href="{{ route('admin.upload_link') }}" style="font-family: inherit; font-weight: bold;font-family: Nunito;">Add New</a></div>
+              <!-- End of Button -->
+              <!-- Table -->
+              <table>
+                <thead>
+                  <tr class="table100-head">
+                    <th class="column1">#</th>
+                    <th class="column2">Title</th>
+                    <th class="column2">Gamemodes</th>
+                    <th class="column2">Link/IP</th>
+                    <th class="column5">Last Update</th>
+                    <th class="column6">Actions</th>
+                  </tr>
+                </thead>
+                      <tbody>
+                          
+                      @foreach ($link as $links)
+                        <tr class="table100-body">
+                          <td class="column1">{{ $loop->iteration }}</td>
+                          <td class="column2">{!! $links['title'] !!}</td>
+                          <td class="column2">{!! $links['desc'] !!}</td>
+                          <td class="column2">{!! $links['link'] !!}</td>
+                          <td class="column5">{{ \Carbon\Carbon::parse($links['updated_at'])->format('j F, Y') }}</td>
+                          <td class="column6-1">
+                          <a class="button touch delete" href="{{ route('admin.delete_captions', $links->id) }}"></a></td>
+                        </tr>
+                      @endforeach
+                      </tbody>
+                    </table>
+                    <div class="card-footer clearfix">
+                      <ul class="pagination pagination-sm m-o">
+                        <span id="table-pagination">
+                       
+                        </span>
+                      </ul>
+                    </div>
+                    <!-- End of Table -->
+            </div>
+          </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
-    </div>
     <!-- /.content-header -->
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row" style="margin-bottom: 40px;">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3 style="margin-bottom: 40px;font-family:Nunito;">Galleries<br>
-                <?php echo $count_photos ?></h3>
-              </div>
-              <div class="icon">
-                <i class="far fa-images"></i>
-              </div>
-              <a href="{{ route('admin.photos') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3 style="margin-bottom: 40px;font-family:Nunito;">News<br>
-                <?php echo $count_news ?></h3>
-              </div>
-              <div class="icon">
-                <i class="far fa-newspaper"></i>
-              </div>
-              <a href="{{ route('admin.news') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3 style="margin-bottom: 40px;font-family:Nunito;">Admin & Staff<br>
-                <?php echo $count_admin ?></h3>
-              </div>
-              <div class="icon">
-                <i class="fas fa-users-cog"></i>
-              </div>
-              <a href="{{ route('admin.admin') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3 style="margin-bottom: 40px;font-family:Nunito;">Links & IP<br>
-                <?php echo $count_link ?></h3>
-              </div>
-              <div class="icon">
-                <i class="fas fa-users-cog"></i>
-              </div>
-              <a href="{{ route('admin.link') }}" class="small-box-footer">More info <i class="fas fa-link"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-        </div>
-        <!-- /.row -->
-    </section>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

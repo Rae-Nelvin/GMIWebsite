@@ -19,7 +19,7 @@
         <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark pt-4" style="margin-left: 7%;">
             <div class="container">
                 <div class="row container-fluid">
-                    <div class="col-2"><a href="#"><img src="{{ asset('assets/images/gmilogo/gmi_recreate.png') }}" alt="GMI Logo" id="navbar-logo" class="rounded-circle"></a></div>
+                    <div class="col-2"><a href="#"><img src="{{ asset('assets/images/gmilogo/gmi_logo_old.png') }}" alt="GMI Logo" id="navbar-logo"></a></div>
                     <div class="col-6"></div>
                     <div class="col-4"><button class="btn btn-outline-light rounded-pill my-sm-0" type="submit" id="btn-contact-us">Contact Us</button></div>
                 </div>
@@ -30,6 +30,8 @@
             <img src="{{ asset('assets/images/gmilogo/gmi_recreate.png') }}" alt="banner-logo" class="rounded-circle" id="banner-logo">
         </div>
     </div>
+
+    
 
     <!-- End of Navbar -->
 
@@ -44,22 +46,17 @@
             <li data-target="#myCarousel" data-slide-to="4"></li>
         </ol>
         <div class="carousel-inner">
-            @foreach ($image1 as $image1)
-            <div class="carousel-item active element" style="background-image:url(/uploads/{{$image1->file_path}})">
-            <p id="types" style="display: none">{{ $image1['gamemodes'] }}</p>
-                @foreach ($images1 as $images1)
+            @foreach ($image1 as $key => $image1)
+            <div class="carousel-item {{$key == 0 ? 'active' : '' }} element" style="background-image:url(/uploads/{{$image1->file_path}})">
+                <p id="types" style="display: none">{{ $image1['gamemodes'] }}</p>
+            </div>
+            @endforeach
+            @foreach ($images1 as $images1)
                 <p class="picts1" style="display: none;">/uploads/{{ $images1['file_path'] }} </p>
-                @endforeach
-            </div>
             @endforeach
-            @foreach ($image2 as $image2)
-            <div class="carousel-item" style="background-image:url(/uploads/{{$image2->file_path}})">
-            <p id="types" style="display: none">{{ $image2['gamemodes'] }}</p>
-            </div>
+            @foreach ($link as $link)
+                <p class="ip" style="display: none;">{{ $link['title'] }}{{ $link['desc']}}{{ $link['link'] }} </p>
             @endforeach
-            @foreach ($images2 as $images2)
-                <p class="picts1" style="display: none;">/uploads/{{ $images2['file_path'] }} </p>
-                @endforeach
             <div class="container" id="container-carousel">
                 <div class="row">
                     <div class="col-6 no-padding"> 
@@ -75,7 +72,12 @@
                             <div class="col-6 mini-gallery"><img src="" id="minigallery2" alt="" style="width: 100%;"></div>
                             <div class="col-6 mini-gallery"><img src="" id="minigallery3" alt="" style="width: 100%;"></div>
                             <div class="col-6 mini-gallery"><img src="" id="minigallery4" alt="" style="width: 100%;"></div>
-                            <a href="#" class="mt-4"><p id="server-content">Click here to get the server contents >>></p></a>
+                        </div>
+                        <div class="row no-padding">
+                            <div class="col-3"><a id="link" href="#" class="mt-4"><p class="server-content">Join Us</p></a></div>
+                            <div class="col-3"><a  id="content" href="#" class="mt-4"><p class="server-content">Contents</p></a></div>
+                            <div class="col-3"><a href="https://gmodcontent.com/" class="mt-4"><p class="server-content" id="cssfix">CSS FIX</p></a></div>
+                            <div class="col-3"><a href="#" class="mt-4"><p class="server-content" id="cssfix">Galleries</p></a></div>
                         </div>
                     </div>
                 </div>
@@ -139,10 +141,9 @@
                 <div class="row" id="row-admingallery">
                     @foreach ($admin as $admin)
                         <div class="col-3 no-padding admin-container img-hover-zoom--brightness">
-                            <a href="{{ $admin['instagram'] }}"><img src="/uploads/{{ $admin->photos->file_path }}" alt="Display_pict" class="admin-picts"></a>
+                            <a href="{{ $admin['social_media'] }}"><img src="/uploads/{{ $admin->photos->file_path }}" alt="Display_pict" class="admin-picts"></a>
                             <div class="centered text-center">
                                 <h1 class="admin-name no-padding">{{ $admin['real_name'] }} <br><br>"{{ $admin['steam_name'] }}" </h1><br>
-
                                 <h3 style="font-family: 'Monsterrat', sans-serif;font-size: 25px;font-weight:600;color: gold">{{ $admin['role'] }}</h3>
                             </div>
                         </div>

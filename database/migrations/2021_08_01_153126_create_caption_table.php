@@ -18,7 +18,7 @@ class CreateCaptionTable extends Migration
             $table->string('title');
             $table->text('desc');
             $table->text('link')->nullable();
-            $table->foreignId('photo_id')->references('id')->on('photos');
+            $table->foreignId('photo_id')->references('id')->on('photos')->nullable();
             $table->foreignId('author_id')->references('id')->on('users');
             $table->timestamps();
         });

@@ -20,8 +20,10 @@ class AdminController extends Controller
         $count_photos = Photos::count();
         $count_admin = Photos::where("types","=","Admin")->count();
         $count_news = Photos::where("types","=","News")->count();
+        $count_link = Captions::where("title","=","ServerIP")->orWhere("title","=","Content")->count();
         return view('admin.dashboard',['admin'=>$admin,'count_photos'=>$count_photos,
-                                        'count_admin'=>$count_admin,'count_news'=>$count_news]);
+                                        'count_admin'=>$count_admin,'count_news'=>$count_news,
+                                        'count_link'=>$count_link]);
     }
 
     function photos(){
@@ -32,7 +34,7 @@ class AdminController extends Controller
     }
 
     function news(){
-        $news = Captions::with('photos')->get();
+        $news = Captions::where("photo_id","!=","NULL")->with('photos')->get();
         $id = Session::get('LoggedUser');
         $admin = User::where('id', $id)->get(['name']);
         return view('admin.news', ['admin'=>$admin,'news'=>$news]);
@@ -43,5 +45,12 @@ class AdminController extends Controller
         $id = Session::get('LoggedUser');
         $admin = User::where('id', $id)->get(['name']);
         return view('admin.admin', ['admin'=>$admin,'admins'=>$admins]);
+    }
+
+    function link(){
+        $link = Captions::where("title","ServerIP")->orWhere("title","Content")->get();
+        $id = Session::get('LoggedUser');
+        $admin = User::where('id', $id)->get(['name']);
+        return view('admin.link', ['admin'=>$admin,'link'=>$link]);
     }
 }

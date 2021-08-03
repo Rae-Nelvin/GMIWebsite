@@ -31,10 +31,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Table CSS -->
   <link href="{{ asset ('assets/css/table-css.css') }}" rel="stylesheet">
+  <link href="{{ asset ('assets/css/form-css.css') }}" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed dark-mode">
 <div class="wrapper">
-
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-dark navbar-light">
@@ -66,8 +66,8 @@
       <br>
     </a>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
+     <!-- Sidebar -->
+     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="info">
@@ -85,85 +85,57 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
+      @if($errors->any())
+        @foreach ($errors->all() as $errors)
+        <div class="alert alert-danger">
+        {{ $errors }}
+        </div>
+        @endforeach
+      @endif
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 h1-title" style="font-size: 40px;font-family: Nunito;font-weight: bold;">Dashboard</h1>
+            <h1 class="m-0 h1-title" style="font-size: 60px;font-family: Nunito;">Add New</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" style="color: white; font-size: 20px;font-family: Nunito;font-weight: bold;">Home</a></li>
-              <li class="breadcrumb-item active" style="font-size: 20px;color: #edc124;font-family: Nunito;font-weight: bold">Dashboard</li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" style="color: white; font-size: 20px">Home</a></li>
+              <li class="breadcrumb-item active" style="font-size: 20px;color: #edc124;font-family: Nunito;">Add New</li>
               <br>
             </ol>
           </div><!-- /.col -->
+            <div class="card-body bg-custom-1 rounded mt-5">
+            <form action="{{ route('admin.uploadlink') }}" method="POST" enctype="multipart/form-data" id="form">
+                @csrf
+                <div class="form-group">
+                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Jenis Link :</label>
+                    <input type="radio" name="types" value="ServerIP">Server IP
+                    <input type="radio" name="types" value="Content">Server Contents
+                </div>
+                <div class="form-group">
+                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Gamemodes :</label>
+                    <select name="gamemodes" id="gamemodes">
+                      <option value="" class="active">---</option>
+                      <option value="TTT">TTT</option>
+                      <option value="Surf">Surf</option>
+                      <option value="Deathrun">Deathrun</option>
+                      <option value="Slender">Slender</option>
+                      <option value="Sandbox">Sandbox</option>
+                      <option value="Server">Server</option>
+                      <option value="CSSFix">CSSFix</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan IP Address / Content Link :</label>
+                    <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="link" style="max-width: 40%;">
+                </div>
+                <button class="btn btn-success" style="font-family: Nunito;font-weight: bold;">Submit<input type="submit" class="button btn-success d-none" /></button>
+            </form>
+              </div>
+          </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row" style="margin-bottom: 40px;">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3 style="margin-bottom: 40px;font-family:Nunito;">Galleries<br>
-                <?php echo $count_photos ?></h3>
-              </div>
-              <div class="icon">
-                <i class="far fa-images"></i>
-              </div>
-              <a href="{{ route('admin.photos') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3 style="margin-bottom: 40px;font-family:Nunito;">News<br>
-                <?php echo $count_news ?></h3>
-              </div>
-              <div class="icon">
-                <i class="far fa-newspaper"></i>
-              </div>
-              <a href="{{ route('admin.news') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3 style="margin-bottom: 40px;font-family:Nunito;">Admin & Staff<br>
-                <?php echo $count_admin ?></h3>
-              </div>
-              <div class="icon">
-                <i class="fas fa-users-cog"></i>
-              </div>
-              <a href="{{ route('admin.admin') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3 style="margin-bottom: 40px;font-family:Nunito;">Links & IP<br>
-                <?php echo $count_link ?></h3>
-              </div>
-              <div class="icon">
-                <i class="fas fa-users-cog"></i>
-              </div>
-              <a href="{{ route('admin.link') }}" class="small-box-footer">More info <i class="fas fa-link"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-        </div>
-        <!-- /.row -->
-    </section>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -207,5 +179,19 @@
 <script src="{{ asset('assets/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
+<!-- Image Preview & Add More Button -->
+<script type="text/javascript">
+
+var loadFile =  function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
+  };
+
+  $('#inputGroupFile02').on('change',function(){
+   var fileName = $(this).val();
+  $(this).next('.custom-file-label').html(fileName);
+})
+
+</script>
 </body>
 </html>

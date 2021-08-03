@@ -129,7 +129,7 @@ class PhotoController extends Controller
             ]);
         }
 
-        return redirect('admin/admin')->with('Successful', 'Your Photo has been uploaded successfully!!');
+        return redirect('admin/admin')->with('Successful', 'Your Admin Post has been uploaded successfully!!');
     }
 
     function admin_edit($id){
@@ -176,7 +176,7 @@ class PhotoController extends Controller
             ]);
         }
         
-            return redirect('admin/admin')->with('Successful', 'Your Photo has been updated successfully!!');
+            return redirect('admin/admin')->with('Successful', 'Your Admin Post has been updated successfully!!');
     }
 
     function upload_news(){
@@ -220,14 +220,65 @@ class PhotoController extends Controller
             
         }
 
-        return redirect('admin/news')->with('Successful', 'Your Photo has been uploaded successfully!!');
+        return redirect('admin/news')->with('Successful', 'Your News has been uploaded successfully!!');
     }
 
-    function delete($id){
+    function upload_link(){
+        $id = Session::get('LoggedUser');
+        $admin = User::where('id',$id)->get(['name']);
+        return view('admin.upload_link',['admin'=>$admin]);
+    }
+
+    function uploadlink(Request $request){
+        $request->validate([
+            'types' => 'required',
+            'link' => 'required',
+            'gamemodes' => 'required'
+        ]);
+
+        $author_id = Session::get('LoggedUser');
+
+        Captions::create([
+            'title' => $request->types,
+            'desc' => $request->gamemodes,
+            'link' => $request->link,
+            'author_id' => $author_id
+        ]);
+
+        return redirect('admin/link')->with('Successful', 'Your Link has been uploaded successfully!!');
+    }
+
+    function deletephotos($id){
 
         $delete = Photos::where('id',$id)->get();
         $delete->each->delete();
 
         return redirect('admin/photos')->with('Fail', 'Your Photo has been deleted successfully!!');
+    }
+
+    function deleteadmin($id){
+
+        $delete = Admin::where('id',$id)->first();
+        $photos = Photos::where("id",$delete->photo_id)->first();
+        $delete->delete();
+        $photos->delete();
+
+        return redirect('admin/admin')->with('Fail', 'Your Admin Post has been deleted successfully!!');
+    }
+
+    function deletecaptions($id){
+
+        $delete = Captions::where('id',$id)->first();
+        if($delete->photo_id == NULL){
+            $delete->delete();
+            $dir = "link";
+        }else{
+            $photos = Photos::where("id",$delete->photo_id)->first();
+            $delete->delete();
+            $photos->delete();
+            $dir = "news";
+        }
+
+        return redirect('admin/'.$dir)->with('Fail', 'Your Content has been deleted successfully!!');
     }
 }

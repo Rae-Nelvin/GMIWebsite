@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Freeletics Surabaya Admin</title>
+  <title>Garry's Mod Indonesia</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -77,49 +77,7 @@
         </div>
       </div>
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="{{ route('admin.dashboard') }}" class="nav-link ">
-              <i class="nav-icon fas fa-home"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-            </li>
-          <li class="nav-item ">
-            <a href="#" class="nav-link">
-            <i class="nav-icon far fa-images"></i>
-              <p>
-                Galleries
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.news') }}" class="nav-link active">
-            <i class="nav-icon far fa-newspaper"></i>
-              <p>
-                News
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.admin') }}" class="nav-link">
-            <i class="nav-icon fas fa-users-cog"></i>
-              <p>
-                Admin & Staff
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+      @include('admin/sidebar')
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -174,13 +132,13 @@
                       @foreach ($news as $newss)
                         <tr class="table100-body">
                           <td class="column1">{{ $loop->iteration }}</td>
-                          <td class="column2">{!! $newss->id !!}</td>
+                          <td class="column2">{!! $newss['title'] !!}</td>
                           <td class="column2">{!! $newss['desc'] !!}</td>
                           <td class="column2">{!! $newss['link'] !!}</td>
                           <td class="column4-1"><img src="/uploads/{{ $newss->photos->file_path }}" alt="" style="max-width:60%"></td>
                           <td class="column5">{{ \Carbon\Carbon::parse($newss['updated_at'])->format('j F, Y') }}</td>
                           <td class="column6-1">
-                          <a class="button touch delete" href="{{ route('admin.delete_photos', $newss->id) }}"></a></td>
+                          <a class="button touch delete" href="{{ route('admin.delete_captions', $newss->id) }}"></a></td>
                         </tr>
                       @endforeach
                       </tbody>
