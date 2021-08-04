@@ -78,50 +78,7 @@
         </div>
       </div>
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="{{ route('admin.dashboard') }}" class="nav-link ">
-              <i class="nav-icon fas fa-home"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-            </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.photos') }}" class="nav-link">
-            <i class="nav-icon far fa-images"></i>
-              <p>
-                Galleries
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.news') }}" class="nav-link">
-            <i class="nav-icon far fa-newspaper"></i>
-              <p>
-                News
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.admin') }}" class="nav-link active">
-            <i class="nav-icon fas fa-users-cog"></i>
-              <p>
-                Admin & Staff
-              </p>
-            </a>
-          </li>
-        </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
+      @include('admin/sidebar')
 
    <!-- Content Wrapper. Contains page content -->
    <div class="content-wrapper">
@@ -164,10 +121,10 @@
                     @foreach ($admins as $adminss)
                     <tr class="table100-body">
                           <td class="column1">{{ $loop->iteration }}</td>
-                          <td class="column2">{!! $adminss['real_name'] !!}</td>
-                          <td class="column2">{!! $adminss['steam_name'] !!}</td>
-                          <td class="column2">{!! $adminss['social_media'] !!}</td>
-                          <td class="column2">{!! $adminss['role'] !!}</td>
+                          <td class="column2"><p class="rname">{!! $adminss['real_name'] !!}</p></td>
+                          <td class="column2"><p class="sname">{!! $adminss['steam_name'] !!}</p></td>
+                          <td class="column2"><p class="socmed">{!! $adminss['social_media'] !!}</p></td>
+                          <td class="column2"><p class="role">{!! $adminss['role'] !!}</p></td>
                           <td class="column4-1"><img src="/uploads/{{$adminss->photos->file_path}}" alt="" style="max-width:60%"></td>
                           <td class="column5">{{ \Carbon\Carbon::parse($adminss['updated_at'])->format('j F, Y') }}</td>
                         </tr>
@@ -187,19 +144,19 @@
                 <input type="hidden" name="id" value="{{ $adminss['id'] }}">
                 <div class="form-group">
                     <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Steam Name :</label>
-                    <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="steam_name" style="max-width: 40%;">
+                    <input type="text" class="form-control bg-white" id="rname" name="steam_name" style="max-width: 40%;">
                 </div>
                 <div class="form-group">
                     <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Real Name :</label>
-                    <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="real_name" style="max-width: 40%;">
+                    <input type="text" class="form-control bg-white" id="sname" name="real_name" style="max-width: 40%;">
                 </div>
                 <div class="form-group">
                     <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Link Instagram (opsional) :</label>
-                    <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="social_media" style="max-width: 40%;">
+                    <input type="text" class="form-control bg-white" id="socmed" name="social_media" style="max-width: 40%;">
                 </div>
                 <div class="form-group">
                     <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Role GMI :</label>
-                    <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="role" style="max-width: 40%;">
+                    <input type="text" class="form-control bg-white" id="role" name="role" style="max-width: 40%;">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputFile" style="font-family: Nunito;" class="title-edit">Images input :</label>
@@ -274,6 +231,15 @@ var loadFile =  function(event) {
    var fileName = $(this).val();
   $(this).next('.custom-file-label').html(fileName);
 })
+
+var rname = $('.rname').text();
+var sname = $('.sname').text();
+var socmed = $('.socmed').text();
+var role = $('.role').text();
+document.getElementById("rname").value = rname;
+document.getElementById("sname").value = sname;
+document.getElementById("socmed").value = socmed;
+document.getElementById("role").value = role;
 
 </script>
 </body>

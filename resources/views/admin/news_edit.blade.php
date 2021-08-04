@@ -80,8 +80,8 @@
 
       @include('admin/sidebar')
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+   <!-- Content Wrapper. Contains page content -->
+   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -94,57 +94,75 @@
       @endif
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 h1-title" style="font-size: 60px;font-family: Nunito;">Add New</h1>
+            <h1 class="m-0 h1-title" style="font-size: 60px;font-family: Nunito;">Edit News</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" style="color: white; font-size: 20px">Home</a></li>
-              <li class="breadcrumb-item active" style="font-size: 20px;color: #edc124;font-family: Nunito;">Add New</li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" style="color: white; font-size: 20px;font-family:Nunito;">Home</a></li>
+              <li class="breadcrumb-item active" style="font-size: 20px;color: #edc124;font-family:Nunito;">Edit News</li>
               <br>
             </ol>
           </div><!-- /.col -->
-            <div class="card-body bg-custom-1 rounded mt-5">
-            <form action="{{ route('admin.uploadphotos') }}" method="POST" enctype="multipart/form-data" id="form">
+          <!-- Table -->
+          <table>
+                <thead>
+                  <tr class="table100-head">
+                    <th class="column1">#</th>
+                    <th class="column2">Title</th>
+                    <th class="column2">Description</th>
+                    <th class="column2">Link</th>
+                    <th class="column4">Gambar</th>
+                    <th class="column5">Last Update</th>
+                  </tr>
+                </thead>
+                      <tbody>
+                      @foreach ($news as $newss)
+                        <tr class="table100-body">
+                          <td class="column1">{{ $loop->iteration }}</td>
+                          <td class="column2"><p class="title">{!! $newss['title'] !!}</p></td>
+                          <td class="column2"><p class="desc">{!! $newss['desc'] !!}</p></td>
+                          <td class="column2"><p class="link">{!! $newss['link'] !!}</p></td>
+                          <td class="column4-1"><img src="/uploads/{{ $newss->photos->file_path }}" alt="" style="max-width:60%"></td>
+                          <td class="column5">{{ \Carbon\Carbon::parse($newss['updated_at'])->format('j F, Y') }}</td>
+                        </tr>
+                      @endforeach
+                      </tbody>
+                    </table>
+        </div>
+            <!-- End of Table -->
+          <!-- Form -->
+          <div class="row mb-2">
+          <div class="card-body bg-custom-1 rounded mt-5">
+            <form action="{{ route('admin.newsedit') }}" method="POST" enctype="multipart/form-data" id="form">
                 @csrf
+                <input type="hidden" name="prevpid" value="{{$newss->photos->id}}">
+                <input type="hidden" name="id" value="{{$newss['id']}}">
                 <div class="form-group">
-                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Select Photo Type :</label><br>
-                    <select name="gamemodes" id="gamemodes">
-                      <option value ="" class="active">---</option>
-                      <option value="TTT">TTT</option>
-                      <option value="Surf">Surf</option>
-                      <option value="Deathrun">Deathrun</option>
-                      <option value="Slender">Slender</option>
-                      <option value="Sandbox">Sandbox</option>
-                    </select>
+                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Judul Berita :</label>
+                    <input type="text" class="form-control bg-white" id="title" name="title" style="max-width: 40%;">
                 </div>
                 <div class="form-group">
-                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Caption Gambar :</label>
-                    <input type="text" class="form-control bg-white" id="exampleInputEmail1" name="caption">
+                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Deskripsi Berita :</label>
+                    <input type="text" class="form-control bg-white" id="desc" name="desc" style="max-width: 40%;">
                 </div>
                 <div class="form-group">
-                  <label for="EventForm" class="title-edit" style="font-family: Nunito;">Type of Pictures: </label>
-                  <input type="radio" id="html" name="types" value="Background">
-                  Background (Only 1 Photos at a time)
-                  <input type="radio" id="html" name="types" value="Screenshoot">
-                  Screenshots
+                    <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Link Berita (optional) :</label>
+                    <input type="text" class="form-control bg-white" id="link" name="link" style="max-width: 40%;">
                 </div>
                 <div class="form-group">
-                  <table>
-                    <thead>
-                    <tr class="table100-head">
-                      <th class="column3">Upload Image</th>
-                      <th class="column4-2">Image Preview</th>
-                      <th class="column6"><button class="btn btn-success" id="add-member-fields">+ Add Photo</button></th>
-                    </tr>
-                    </thead>
-                    <tbody id="team-member-fields">
-                    </tbody>
-                  </table>
-                </div>
+                    <label for="exampleInputFile" style="font-family: Nunito;" class="title-edit">Images input :</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02" name="images[]" onchange="loadFile(event)" size="60">
+                        <label class="custom-file-label bg-white" for="inputGroupFile02" style="max-width: 40%;">Choose Image</label>
+                      </div>
+                    </div>
+                    <img id="output" style="padding:10px; max-width: 25%;"/>
+                  </div>
                 <button class="btn btn-success" style="font-family: Nunito;font-weight: bold;">Submit<input type="submit" class="button btn-success d-none" /></button>
             </form>
               </div>
-          </div>
+          <!-- End of Form -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -195,52 +213,22 @@
 <!-- Image Preview & Add More Button -->
 <script type="text/javascript">
 
-var i = 0;
-
-function preview_member(event, inp) {
-  var reader = new FileReader();
-  console.log(inp);
-  reader.onload = function() {
-    var output = document.getElementById("output_member" + inp);
-    output.src = reader.result;
+var loadFile =  function(event) {
+    var output = document.getElementById('output');
+    output.src = URL.createObjectURL(event.target.files[0]);
   };
 
-  reader.readAsDataURL(event.target.files[0]);
-}
+  $('#inputGroupFile02').on('change',function(){
+   var fileName = $(this).val();
+  $(this).next('.custom-file-label').html(fileName);
+})
 
-jQuery(document).ready(function($) {
-  //fadeout selected item and remove
-  $(document).on("click", "#remove-member-fields", function(event) {
-    event.preventDefault();
-    $(this)
-      .parent()
-      .fadeOut(300, function() {
-        $(this).empty();
-        return false;
-      });
-  });
-
-  $('tbody').on('click', '.remove', function(){
-    $(this).parent().parent().remove();
-  });
-
-  //add input
-  $("#add-member-fields").click(function() {
-    i++;
-
-    var rows = '<tr class="table100-body">' +
-                      '<td class="column3"><input type="file" name="images[]" id="image" onchange="preview_member(event, '+ i + ')"></td>' +
-                      '<td class="column4-2"><img id="output_member'+ i + '" style="max-width:40%;margin: 10px"></td>' +
-                      '<td class="column6"><button class="btn btn-danger remove" id="remove-member-fields">- Remove</button></td>' +
-                    '</tr>';
-
-    $(rows)
-      .fadeIn("slow")
-      .appendTo("#team-member-fields");
-    return false;
-  });
-});
-
+var title = $('.title').text();
+var desc = $('.desc').text();
+var link = $('.link').text();
+document.getElementById("title").value = title;
+document.getElementById("desc").value = desc;
+document.getElementById("link").value = link;
 </script>
 </body>
 </html>

@@ -138,6 +138,7 @@
                           <td class="column4-1"><img src="/uploads/{{ $newss->photos->file_path }}" alt="" style="max-width:60%"></td>
                           <td class="column5">{{ \Carbon\Carbon::parse($newss['updated_at'])->format('j F, Y') }}</td>
                           <td class="column6-1">
+                          <a class="button touch edit edit-btn" href="{{ route('admin.news_edit',$newss->id) }}"></a>
                           <a class="button touch delete" href="{{ route('admin.delete_captions', $newss->id) }}"></a></td>
                         </tr>
                       @endforeach

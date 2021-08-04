@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
+
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    background-color: rgb(247, 221, 221);
+}
+
+#intro {
+    max-width: 100% !important;
+    min-height: 50vh;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;
+}
+
+#layer {
+    background-color: rgba(235, 91, 91, 0.726);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#navbar-logo{
+    max-width: 70%;
+}
+
+#btn-contact-us{
+    font-size: 20px;
+    padding: 15px 50px 15px 50px;
+    margin-top: 20px;
+}
+
+#logo-banner{
+    margin-top: 20px;
+}
+
+#banner-logo {
+    margin-top: 50px;
+    max-width: 25%;
+    margin-left: -13%;
+    position: absolute;
+    border-style: solid;
+    border-color: white;
+}
+
+#logo-banner p {
+    font-size: 90px;
+    font-family: 'Source Sans Pro', sans-serif;
+    color: white;
+    margin: 0px;
+    padding: 0px;
+}
+
+#gallery{
+    margin-top: 5%;
+}
+
+#gallery .row{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#gallery .col-4{
+    margin-bottom: 4%;
+}
+
+.images img {
+    max-width: 100%;
+    min-height: 110%;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.images img:hover{
+    transform: scale(0.95);
+}
+
+.mymodal {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    z-index: 1;
+    overflow: auto;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.mymodalContent {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mymodalImg {
+    max-width: 60%;
+}
+
+.mymodalTxt {
+    margin-top: 1em;
+}
+
+.close {
+    position: absolute;
+    top: 1em;
+    right: 1.5em;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: white;
+}
+
+.mymodal.appear {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.mymodal.appear .mymodalImg, 
+.mymodal.appear .mymodalTxt{
+    animation: zoom 0.3s linear;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}

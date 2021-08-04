@@ -24,6 +24,26 @@ class MainController extends Controller
                                 'link' => $link]);
     }
 
+    function gallery($id){
+        if($id == 1)
+        {
+            $gamemodes = "TTT";
+        }else if($id == 2){
+            $gamemodes = "Surf";
+        }else if($id == 3){
+            $gamemodes = "Deathrun";
+        }else if($id == 4){
+            $gamemodes = "Slender";
+        }else if($id == 5){
+            $gamemodes = "Sandbox";
+        }else if($id == 6){
+            $gamemodes = "Prop Hunt";
+        }
+        $background = Photos::where("types","=","Background")->where("gamemodes","=",$gamemodes)->get();
+        $images = Photos::Where("types","=","Screenshoot")->where("gamemodes","=",$gamemodes)->get();
+        return view('gallery',['images' => $images,'background' => $background]);
+    }
+
     function login(){
         return view('auth.login');
     }

@@ -15,13 +15,14 @@
   <body>
 
     <!-- Start of Navbar -->
+    
     <div id="intro">
         <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark pt-4" style="margin-left: 7%;">
             <div class="container">
                 <div class="row container-fluid">
                     <div class="col-2"><a href="#"><img src="{{ asset('assets/images/gmilogo/gmi_logo_old.png') }}" alt="GMI Logo" id="navbar-logo"></a></div>
                     <div class="col-6"></div>
-                    <div class="col-4"><button class="btn btn-outline-light rounded-pill my-sm-0" type="submit" id="btn-contact-us">Contact Us</button></div>
+                    <div class="col-4"><a href="#admin"><button class="btn btn-outline-light rounded-pill my-sm-0" type="submit" id="btn-contact-us">Contact Us</button></a></div>
                 </div>
             </div>
         </nav>
@@ -31,20 +32,11 @@
         </div>
     </div>
 
-    
-
     <!-- End of Navbar -->
 
     <!-- Start of Showcase -->
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-            <li data-target="#myCarousel" data-slide-to="4"></li>
-        </ol>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-pause="false" data-interval="2250">
         <div class="carousel-inner">
             @foreach ($image1 as $key => $image1)
             <div class="carousel-item {{$key == 0 ? 'active' : '' }} element" style="background-image:url(/uploads/{{$image1->file_path}})">
@@ -76,8 +68,8 @@
                         <div class="row no-padding">
                             <div class="col-3"><a id="link" href="#" class="mt-4"><p class="server-content">Join Us</p></a></div>
                             <div class="col-3"><a  id="content" href="#" class="mt-4"><p class="server-content">Contents</p></a></div>
-                            <div class="col-3"><a href="https://gmodcontent.com/" class="mt-4"><p class="server-content" id="cssfix">CSS FIX</p></a></div>
-                            <div class="col-3"><a href="#" class="mt-4"><p class="server-content" id="cssfix">Galleries</p></a></div>
+                            <div class="col-3"><a href="https://gmodcontent.com/" class="mt-4"><p class="server-content">CSS FIX</p></a></div>
+                            <div class="col-3"><a onclick="getGalleryID()" class="mt-4" id="gallery"><p class="server-content">Galleries</p></a></div>
                         </div>
                     </div>
                 </div>

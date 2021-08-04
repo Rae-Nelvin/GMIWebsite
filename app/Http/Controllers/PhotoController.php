@@ -223,6 +223,54 @@ class PhotoController extends Controller
         return redirect('admin/news')->with('Successful', 'Your News has been uploaded successfully!!');
     }
 
+    function news_edit($id){
+        $ids = Session::get('LoggedUser');
+        $admin = User::where('id',$ids)->get(['name']);
+        $news = Captions::where('id',$id)->with('photos')->get();
+        return view('admin.news_edit',['admin'=>$admin,'news' => $news]);
+    }
+
+    function newsedit(Request $request){
+        $request->validate([
+            'title' => 'required',
+            'desc' => 'required',
+            'link' => 'required',
+            'images' => 'required',
+            'prevpid' => 'required'
+        ]);
+
+        $author_id = Session::get('LoggedUser');
+        $files = $request->file('images');
+        $types = "News";
+
+        foreach($files as $file){
+            $imageName = $types . '/'.  $file->getClientOriginalName();
+            $file->move(public_path('uploads/'. $types . '/'), $imageName);
+
+            $updatephotos = Photos::where('id',$request->prevpid)
+            ->update([
+                'caption' => $request->title,
+                'author_id' => $author_id,
+                'types' => $types,
+                'file_path' => $imageName
+            ]);
+
+            $id = Photos::select("id")->where("file_path","=",$imageName)->first();
+
+            $edit = Captions::where('id',$request->id)
+            ->update([
+                'title' => $request->title,
+                'desc' => $request->desc,
+                'link' => $request->link,
+                'photo_id' => $id->id,
+                'author_id' => $author_id
+            ]);
+            
+        }
+
+        return redirect('admin/news')->with('Successful', 'Your News has been updated successfully!!');
+    }
+
     function upload_link(){
         $id = Session::get('LoggedUser');
         $admin = User::where('id',$id)->get(['name']);
@@ -246,6 +294,34 @@ class PhotoController extends Controller
         ]);
 
         return redirect('admin/link')->with('Successful', 'Your Link has been uploaded successfully!!');
+    }
+
+    function link_edit($id){
+        $ids = Session::get('LoggedUser');
+        $admin = User::where('id',$ids)->get(['name']);
+        $link = Captions::where('id',$id)->get();
+        return view('admin.link_edit',['admin'=>$admin,'link' => $link]);
+    }
+
+
+    function linkedit(Request $request){
+        $request->validate([
+            'types' => 'required',
+            'link' => 'required',
+            'gamemodes' => 'required'
+        ]);
+
+        $author_id = Session::get('LoggedUser');
+
+        Captions::where('id',$request->id)
+        ->update([
+            'title' => $request->types,
+            'desc' => $request->gamemodes,
+            'link' => $request->link,
+            'author_id' => $author_id
+        ]);
+
+        return redirect('admin/link')->with('Successful', 'Your Link has been updated successfully!!');
     }
 
     function deletephotos($id){

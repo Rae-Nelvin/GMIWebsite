@@ -4,7 +4,9 @@ if(activeText == "TTT")
 {
     var activeText2 = "Trouble in Terrorist Town";
 }
-else{
+else if(activeText == "Slender"){
+    var activeText2 = "Stop it, Slender!";
+}else{
     var activeText2 = activeText;
 }
 document.getElementById("gamemode-title").innerHTML = activeText2;
@@ -19,7 +21,9 @@ $("#myCarousel").on('slid.bs.carousel', function () {
     {
         var activeText2 = "Trouble in Terrorist Town";
     }
-    else{
+    else if(activeText == "Slender"){
+        var activeText2 = "Stop it, Slender!";
+    }else{
         var activeText2 = activeText;
     }
     document.getElementById("gamemode-title").innerHTML = activeText2;
@@ -123,4 +127,23 @@ function fadein(element) {
         element.style.filter = 'alpha(opacity=' + op * 100 + ")";
         op += op * 0.1;
     }, 10);
+}
+
+function getGalleryID() {
+
+    var gamemode = activeText;
+    if(gamemode == "TTT"){
+        window.location.href = "gallery/1" ;
+    }else if(gamemode == "Surf"){
+        window.location.href = "gallery/2" ;
+    }else if(gamemode == "Deathrun"){
+        window.location.href = "gallery/3" ;
+    }else if(gamemode == "Prop Hunt"){
+        window.location.href = "gallery/4" ;
+    }else if(gamemode == "Slender"){
+        window.location.href = "gallery/5" ;
+    }else if(gamemode == "Sandbox"){
+        window.location.href = "gallery/6" ;
+    }
+    
 }

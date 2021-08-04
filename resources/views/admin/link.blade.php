@@ -137,6 +137,7 @@
                           <td class="column2">{!! $links['link'] !!}</td>
                           <td class="column5">{{ \Carbon\Carbon::parse($links['updated_at'])->format('j F, Y') }}</td>
                           <td class="column6-1">
+                          <a class="button touch edit edit-btn" href="{{ route('admin.link_edit',$links->id) }}"></a>
                           <a class="button touch delete" href="{{ route('admin.delete_captions', $links->id) }}"></a></td>
                         </tr>
                       @endforeach

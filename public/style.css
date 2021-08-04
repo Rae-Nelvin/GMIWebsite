@@ -39,7 +39,7 @@ html,body
 }
 
 #navbar-logo{
-    max-width: 70%;
+    max-width: 50%;
 }
 
 #btn-contact-us{
@@ -125,6 +125,11 @@ html,body
 
 .content {
     margin-top: -50vh;
+}
+
+a#gallery:hover {
+    cursor: pointer;
+    text-decoration: underline #0056b3;
 }
 
 .title{
