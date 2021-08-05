@@ -38,7 +38,7 @@
                             <ul class="social-network social-circle">
                                 <li><a href="https://www.instagram.com/leonardowijaya11/" class="icoFacebook" title="Instagram"><i class="fab fa-instagram"></i></a></li>
                                 <li><a href="https://github.com/Rae-Nelvin" class="icoTwitter" title="Github"><i class="fab fa-github"></i></a></li>
-                                <li><a href="#" class="icoGoogle" title="Gmail"><i class="fab fa-google-plus"></i></a></li>
+                                <li><a href="mailto: raenelvin29@gmail.com" class="icoGoogle" title="Gmail"><i class="fab fa-google-plus"></i></a></li>
                             </ul>
                         </div>
                     </form>
