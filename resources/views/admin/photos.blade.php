@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Garry's Mod Indonesia</title>
+  <link rel="shortcut icon" href="{{ asset('assets/images/gmilogo/gmi_logo_old.png') }}" />
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -143,14 +144,9 @@
                       @endforeach
                       </tbody>
                     </table>
-                    <div class="card-footer clearfix">
-                      <ul class="pagination pagination-sm m-o">
-                        <span id="table-pagination">
-                        {{$photo->links()}}
-                        </span>
-                      </ul>
-                    </div>
-                    
+                    <div class="d-flex justify-content-center mt-5">
+                        {!! $photo->links() !!}
+                    </div>     
                     <!-- End of Table -->
             </div>
           </div>

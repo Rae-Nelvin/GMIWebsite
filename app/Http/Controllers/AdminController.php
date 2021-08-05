@@ -34,21 +34,21 @@ class AdminController extends Controller
     }
 
     function news(){
-        $news = Captions::where("photo_id","!=","NULL")->with('photos')->get();
+        $news = Captions::where("photo_id","!=","NULL")->with('photos')->paginate(5);
         $id = Session::get('LoggedUser');
         $admin = User::where('id', $id)->get(['name']);
         return view('admin.news', ['admin'=>$admin,'news'=>$news]);
     }
 
     function admin(){
-        $admins = Admin::with('photos')->get();
+        $admins = Admin::with('photos')->paginate(5);
         $id = Session::get('LoggedUser');
         $admin = User::where('id', $id)->get(['name']);
         return view('admin.admin', ['admin'=>$admin,'admins'=>$admins]);
     }
 
     function link(){
-        $link = Captions::where("title","ServerIP")->orWhere("title","Content")->get();
+        $link = Captions::where("title","ServerIP")->orWhere("title","Content")->paginate(5);
         $id = Session::get('LoggedUser');
         $admin = User::where('id', $id)->get(['name']);
         return view('admin.link', ['admin'=>$admin,'link'=>$link]);

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('style.css') }}">
 
     <title>Garry's Mod Indonesia</title>
+    <link rel="shortcut icon" href="{{ asset('assets/images/gmilogo/gmi_logo_old.png') }}" />
   </head>
   <body>
 
