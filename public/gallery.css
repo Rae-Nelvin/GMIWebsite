@@ -110,7 +110,7 @@ html,body
 }
 
 .mymodalImg {
-    max-width: 60%;
+    max-width: 75%;
 }
 
 .mymodalTxt {
@@ -142,5 +142,35 @@ html,body
     }
     to {
         transform: scale(1);
+    }
+}
+
+/* Laptop View */
+@media all and (min-width: 720px) and (max-width: 1366px){
+    #logo-banner{
+        margin-top: 10px;
+    }
+    
+    #banner-logo {
+        margin-top: 50px;
+        max-width: 25%;
+        margin-left: -13%;
+        position: absolute;
+        border-style: solid;
+        border-color: white;
+    }
+    
+    #logo-banner p {
+        font-size: 60px;
+        font-family: 'Source Sans Pro', sans-serif;
+        color: white;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #btn-contact-us{
+        font-size: 13px;
+        padding: 15px 50px 15px 50px;
+        margin-top: 10px;
     }
 }

@@ -134,7 +134,7 @@
           <!-- Form -->
           <div class="row mb-2">
           <div class="card-body bg-custom-1 rounded mt-5">
-            <form action="{{ route('admin.uploadlink') }}" method="POST" enctype="multipart/form-data" id="form">
+            <form action="{{ route('admin.linkedit') }}" method="POST" enctype="multipart/form-data" id="form">
                 @csrf
                 <input type="hidden" name="id" value="{{$links['id']}}">
                 <div class="form-group">
@@ -146,13 +146,12 @@
                     <label for="EventForm" class="title-edit" style="font-family: Nunito;">Masukkan Gamemodes :</label>
                     <select name="gamemodes" id="gamemodes">
                       <option value="" class="active">---</option>
-                      <option value="TTT">TTT</option>
+                      <option value="TTT">Trouble in Terrorist Town</option>
                       <option value="Surf">Surf</option>
                       <option value="Deathrun">Deathrun</option>
                       <option value="Slender">Slender</option>
                       <option value="Sandbox">Sandbox</option>
-                      <option value="Server">Server</option>
-                      <option value="CSSFix">CSSFix</option>
+                      <option value="PH">Prop Hunt</option>
                     </select>
                 </div>
                 <div class="form-group">

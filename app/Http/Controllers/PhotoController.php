@@ -27,7 +27,6 @@ class PhotoController extends Controller
 
         if($request->types == "Screenshoot"){
             $types = "Screenshoot";
-            $gamemodes = $request->gamemodes;
         }else if($request->types == "Background"){
             $types = $request->types;
             $request->validate([
@@ -48,7 +47,7 @@ class PhotoController extends Controller
                     'author_id' => $id,
                     'caption' => $request->caption,
                     'types' => $types,
-                    'gamemodes' => $gamemodes,
+                    'gamemodes' => $request->gamemodes,
                     'file_path' => $imageName
                 ]);
             }
@@ -285,15 +284,20 @@ class PhotoController extends Controller
         ]);
 
         $author_id = Session::get('LoggedUser');
+        $check = Captions::where("types","ServerIP")->where("gamemodes",$request->gamemodes);
 
-        Captions::create([
-            'title' => $request->types,
-            'desc' => $request->gamemodes,
-            'link' => $request->link,
-            'author_id' => $author_id
-        ]);
+        if($check){
+            return redirect('admin/link')->with('Fail', 'The gamemodes has an IP already!!');
+        }else{
+            Captions::create([
+                'title' => $request->types,
+                'desc' => $request->gamemodes,
+                'link' => $request->link,
+                'author_id' => $author_id
+            ]);
 
-        return redirect('admin/link')->with('Successful', 'Your Link has been uploaded successfully!!');
+            return redirect('admin/link')->with('Successful', 'Your Link has been uploaded successfully!!');
+        }
     }
 
     function link_edit($id){

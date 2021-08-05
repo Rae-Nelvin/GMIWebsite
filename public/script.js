@@ -6,6 +6,8 @@ if(activeText == "TTT")
 }
 else if(activeText == "Slender"){
     var activeText2 = "Stop it, Slender!";
+}else if(activeText == "PH"){
+    var activeText2 = "Prop Hunt";
 }else{
     var activeText2 = activeText;
 }
@@ -23,6 +25,8 @@ $("#myCarousel").on('slid.bs.carousel', function () {
     }
     else if(activeText == "Slender"){
         var activeText2 = "Stop it, Slender!";
+    }else if(activeText == "PH"){
+        var activeText2 = "Prop Hunt";
     }else{
         var activeText2 = activeText;
     }
@@ -138,7 +142,7 @@ function getGalleryID() {
         window.location.href = "gallery/2" ;
     }else if(gamemode == "Deathrun"){
         window.location.href = "gallery/3" ;
-    }else if(gamemode == "Prop Hunt"){
+    }else if(gamemode == "PH"){
         window.location.href = "gallery/4" ;
     }else if(gamemode == "Slender"){
         window.location.href = "gallery/5" ;

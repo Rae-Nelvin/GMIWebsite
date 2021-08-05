@@ -32,7 +32,7 @@
             </nav>
             <div id="logo-banner" class="text-center">
                 
-                <p style="margin-left: 1%;">{{ $background['gamemodes'] }}</p>
+                <p>{{ $background['gamemodes'] }}</p>
                 @endforeach
                 <p style="font-size: 35px;">Galleries</p>
                 <a href="{{ route('index') }}"><button class="btn btn-outline-light rounded-pill" type="submit" id="btn-contact-us">Back to Menu ➔</button></a>

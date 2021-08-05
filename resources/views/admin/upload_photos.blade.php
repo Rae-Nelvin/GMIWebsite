@@ -111,11 +111,12 @@
                     <label for="EventForm" class="title-edit" style="font-family: Nunito;">Select Photo Type :</label><br>
                     <select name="gamemodes" id="gamemodes">
                       <option value ="" class="active">---</option>
-                      <option value="TTT">TTT</option>
+                      <option value="TTT">Trouble in Terrorist Town</option>
                       <option value="Surf">Surf</option>
                       <option value="Deathrun">Deathrun</option>
                       <option value="Slender">Slender</option>
                       <option value="Sandbox">Sandbox</option>
+                      <option value="PH">Prop Hunt</option>
                     </select>
                 </div>
                 <div class="form-group">

@@ -33,11 +33,11 @@ class MainController extends Controller
         }else if($id == 3){
             $gamemodes = "Deathrun";
         }else if($id == 4){
-            $gamemodes = "Slender";
+            $gamemodes = "PH";
         }else if($id == 5){
-            $gamemodes = "Sandbox";
+            $gamemodes = "Slender";
         }else if($id == 6){
-            $gamemodes = "Prop Hunt";
+            $gamemodes = "Sandbox";
         }
         $background = Photos::where("types","=","Background")->where("gamemodes","=",$gamemodes)->get();
         $images = Photos::Where("types","=","Screenshoot")->where("gamemodes","=",$gamemodes)->get();
