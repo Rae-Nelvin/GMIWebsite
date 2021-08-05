@@ -12,7 +12,7 @@ back at late 2018 and the server got shut down. At the end of 2020, KamFretoZ, o
 So he and Reynaldy also Wolvindra worked together to bring this server up and they relaunched this server in the early 2021 precisely around June - July. At the end, Enjoy the server!!
 And surely leave some comments or any suggestions to <a href="mailto:raenelvin29@gmail.com?subject=subject text">my email </a></p>
 
-<h1 align="center">How to Install Laravel to Localhost (on Windows)</h1>
+<h1 align="center">How to Install the website to Localhost (on Windows)</h1>
 <p><ol>
     <li>Download and install <a href="https://www.apachefriends.org/download.html"> XAMPP</a></li>
     <li>Download and install <a href="https://getcomposer.org/download/">Composer</a></li>
