@@ -10,7 +10,7 @@
 This server has many gamemodes that can surely bring some joys from any stressfull days. Fun fact, this server was established since early 2015 by the owner named Wolvindra. It got some issues
 back at late 2018 and the server got shut down. At the end of 2020, KamFretoZ, one of the Owner of this server and his friend Reynaldy, had an idea to bring this server back alive again.
 So he and Reynaldy also Wolvindra worked together to bring this server up and they relaunched this server in the early 2021 precisely around June - July. At the end, Enjoy the server!!
-And surely leave some comments or critics to <a href="mailto:raenelvin29@gmail.com?subject=subject text">my email </a></p>
+And surely leave some comments or any suggestions to <a href="mailto:raenelvin29@gmail.com?subject=subject text">my email </a></p>
 
 <h1 align="center">How to Install Laravel to Localhost (on Windows)</h1>
 <p><ol>
