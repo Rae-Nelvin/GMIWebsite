@@ -1,10 +1,10 @@
 body {
-    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(assets/images/Login1.jpg) !important;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(../images/Background/loading.jpg) !important;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
     background-size: cover;
-    
+    max-height: 100vh;
 }
 
 .card {
@@ -18,11 +18,11 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    background: #191919;
+    background: #191919d3;
     ;
     text-align: center;
     transition: 0.25s;
-    margin-top: 100px
+    margin-top: 100px;
 }
 
 .box input[type="text"],
@@ -89,15 +89,15 @@ ul.social-network li {
 }
 
 .social-network a.icoFacebook:hover {
-    background-color: #3B5998
+    background-color: #bc2a8d
 }
 
 .social-network a.icoTwitter:hover {
-    background-color: #33ccff
+    background-color: #4078c0
 }
 
 .social-network a.icoGoogle:hover {
-    background-color: #BD3518
+    background-color: #D44638
 }
 
 .social-network a.icoFacebook:hover i,

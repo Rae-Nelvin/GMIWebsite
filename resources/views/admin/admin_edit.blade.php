@@ -44,7 +44,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('admin.dashboard') }}"><h2 id="nav-title">GARRY'S MOD INDONESIA</h2></a>
+        <a href="{{ route('admin.dashboard') }}"><h2 id="nav-title">GARRY'S MOD <span style="color: white">INDONESIA</span></h2></a>
       </li>
     </ul>
 
@@ -159,7 +159,7 @@
                     <input type="text" class="form-control bg-white" id="role" name="role" style="max-width: 40%;">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputFile" style="font-family: Nunito;" class="title-edit">Images input :</label>
+                    <label for="exampleInputFile" style="font-family: Nunito;" class="title-edit">Masukkan Gambar (Ratio 1:1) :</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="inputGroupFile02" name="images[]" onchange="loadFile(event)" size="60">

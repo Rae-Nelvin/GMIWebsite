@@ -44,7 +44,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('admin.dashboard') }}"><h2 id="nav-title">GARRY'S MOD INDONESIA</h2></a>
+      <a href="{{ route('admin.dashboard') }}"><h2 id="nav-title">GARRY'S MOD <span style="color: white">INDONESIA</span></h2></a>
       </li>
     </ul>
 

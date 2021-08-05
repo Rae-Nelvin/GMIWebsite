@@ -1,3 +1,4 @@
+<!-- Made By Leonardo Wijaya -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -36,7 +37,7 @@
 
     <!-- Start of Showcase -->
 
-    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-pause="false" data-interval="2250">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-pause="false">
         <div class="carousel-inner">
             @foreach ($image1 as $key => $image1)
             <div class="carousel-item {{$key == 0 ? 'active' : '' }} element" style="background-image:url(/uploads/{{$image1->file_path}})">
@@ -88,13 +89,15 @@
                     <div id="myCarousel2" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             @foreach ($news1 as $key => $news1)
-                            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                                <div class="overlay-image"  style="background-image:url(uploads/{{$news1->photos->file_path}}"></div>
-                                <div class="carousel-rules-container">
-                                    <h1 class="carousel-rules-container-h1">{{ $news1['title'] }}</h1>
-                                    <p class="carousel-rules-container-p">{{ $news1['desc'] }}</p>
+                            <a href="{{ $news1['link'] }}">
+                                <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                                    <div class="overlay-image"  style="background-image:url(uploads/{{$news1->photos->file_path}}"></div>
+                                    <div class="carousel-rules-container">
+                                        <h1 class="carousel-rules-container-h1">{{ $news1['title'] }}</h1>
+                                        <p class="carousel-rules-container-p">{{ $news1['desc'] }}</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                             @endforeach
                         </div>
                         <a href="#myCarousel2" class="carousel-control-prev" role="button" data-slide-to="prev" style="margin-left: -5%"><span class="sr-only">Previous</span><span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
@@ -147,6 +150,10 @@
     </div>
 
     <!-- End of Admin & Staff -->
+
+    <!-- Start of Footer -->
+        <p class="text-center" style="color: grey;"><span>&copy;</span>Made By : <a href="mailto: raenelvi29@gmail.com" style="color: grey;">Leonardo Wijaya</a></p>
+    <!-- End of Footer -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

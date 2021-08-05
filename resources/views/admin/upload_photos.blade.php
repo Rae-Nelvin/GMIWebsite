@@ -44,7 +44,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ route('admin.dashboard') }}"><h2 id="nav-title">GARRY'S MOD INDONESIA</h2></a>
+      <a href="{{ route('admin.dashboard') }}"><h2 id="nav-title">GARRY'S MOD <span style="color: white">INDONESIA</span></h2></a>
       </li>
     </ul>
 
@@ -132,7 +132,7 @@
                   <table>
                     <thead>
                     <tr class="table100-head">
-                      <th class="column3">Upload Image</th>
+                      <th class="column3">Upload Image (16:9)</th>
                       <th class="column4-2">Image Preview</th>
                       <th class="column6"><button class="btn btn-success" id="add-member-fields">+ Add Photo</button></th>
                     </tr>

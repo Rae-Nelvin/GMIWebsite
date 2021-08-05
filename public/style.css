@@ -145,7 +145,7 @@ a#gallery:hover {
 }
 
 #rules {
-    background-image: url(assets/images/GMODSS/hl2_hBPEMzGGXo.png);
+    background-image: url(assets/images/GMODSS/2.png);
     background-position: center;
     background-size: cover;
     width: 100%;
@@ -271,13 +271,13 @@ a#gallery:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     background: rgba(0, 0, 0, 0.8);
 }
 
 .carousel-rules-container-h1 {
     font-weight: 900;
-    font-size: 65px;
+    font-size: 40px;
     font-family: 'Poppins', sans-serif;
     color: white;
     margin-top: 1%;
@@ -290,6 +290,7 @@ a#gallery:hover {
     font-size: 17px;
     margin-left: 5%;
     margin-right: 20%;
+    text-align: justify;
 }
 
 
@@ -386,6 +387,52 @@ a#gallery:hover {
         font-size: 20px;
         font-weight: 700;
     }
+
+    .carousel-rules-container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding-bottom: 10px;
+        background: rgba(0, 0, 0, 0.8);
+    }
+    
+    .carousel-rules-container-h1 {
+        font-weight: 900;
+        font-size: 30px;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+        margin-top: 1%;
+        margin-left: 5%;
+        margin-right: 20%;
+    }
+    
+    .carousel-rules-container-p {
+        color: white;
+        font-size: 15px;
+        margin-left: 5%;
+        margin-right: 20%;
+        text-align: justify;
+    }
+
+    #rules-content {
+        padding-top: 10%;
+        margin-left: 3%;
+    }
+    
+    #rules-list {
+        font-size: 19px;
+        margin-top: 40px;
+        color: white;
+    }
+    
+    .text-box {
+        max-width: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 20px 50px 20px 10px;
+        padding-right: 10px;
+        margin-top: 9%;
+    }
 }
 
 /* Laptop Mode */
@@ -468,5 +515,51 @@ a#gallery:hover {
         color: white;
         font-size: 16px;
         font-weight: 700;
+    }
+
+    .carousel-rules-container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding-bottom: 10px;
+        background: rgba(0, 0, 0, 0.8);
+    }
+    
+    .carousel-rules-container-h1 {
+        font-weight: 900;
+        font-size: 30px;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+        margin-top: 1%;
+        margin-left: 5%;
+        margin-right: 20%;
+    }
+    
+    .carousel-rules-container-p {
+        color: white;
+        font-size: 12px;
+        margin-left: 5%;
+        margin-right: 20%;
+        text-align: justify;
+    }
+
+    #rules-content {
+        padding-top: 10%;
+        margin-left: 3%;
+    }
+    
+    #rules-list {
+        font-size: 15px;
+        margin-top: 40px;
+        color: white;
+    }
+    
+    .text-box {
+        max-width: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        padding: 20px 50px 20px 10px;
+        padding-right: 10px;
+        margin-top: 7%;
     }
 }
