@@ -6,7 +6,7 @@
 
 <h1 align="center">About Garry's Mod Indonesia Revived</h1>
 
-<p align="justify">This Website was dedicated from me to help with the developments of the Garry's Mod Indonesia Revived. Garry's Mod Indonesia Revived is a Indonesian server for Garry's Mod game.
+<p align="justify">This website is dedicated from me to help with the developments of the Garry's Mod Indonesia Revived. Garry's Mod Indonesia Revived is a Indonesian server for Garry's Mod game.
 This server has many gamemodes that can surely bring some joys from any stressfull days. Fun fact, this server was established since early 2015 by the owner named Wolvindra. It got some issues
 back at late 2018 and the server got shut down. At the end of 2020, KamFretoZ, one of the Owner of this server and his friend Reynaldy, had an idea to bring this server back alive again.
 So he and Reynaldy also Wolvindra worked together to bring this server up and they relaunched this server in the early 2021 precisely around June - July. At the end, Enjoy the server!!
