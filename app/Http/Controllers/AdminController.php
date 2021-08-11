@@ -48,7 +48,7 @@ class AdminController extends Controller
     }
 
     function link(){
-        $link = Captions::where("title","ServerIP")->orWhere("title","Content")->paginate(5);
+        $link = Captions::where("title","ServerIP")->orWhere("title","Content")->paginate(15);
         $id = Session::get('LoggedUser');
         $admin = User::where('id', $id)->get(['name']);
         return view('admin.link', ['admin'=>$admin,'link'=>$link]);

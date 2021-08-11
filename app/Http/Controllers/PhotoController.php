@@ -284,9 +284,9 @@ class PhotoController extends Controller
         ]);
 
         $author_id = Session::get('LoggedUser');
-        $check = Captions::where("types","ServerIP")->where("gamemodes",$request->gamemodes);
+        $check = Captions::where("title",'=',$request->types)->where("desc",'=',$request->gamemodes)->first();
 
-        if($check){
+        if($check != NULL){
             return redirect('admin/link')->with('Fail', 'The gamemodes has an IP already!!');
         }else{
             Captions::create([
