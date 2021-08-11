@@ -16,7 +16,7 @@ class MainController extends Controller
         $image1 = Photos::where('types','=','Background')->get();
         $images1 = Photos::where("types","=","Screenshoot")->get();
         $admin = Admin::with('photos')->get();
-        $news1 = Captions::where("photo_id","!=","NULL")->orderBy('id','DESC')->with('photos')->take(5);
+        $news1 = Captions::where("photo_id","!=","NULL")->orderBy('id','DESC')->with('photos')->take(5)->get();
         $link = Captions::where("title","ServerIP")->orWhere("title","Content")->get();
 
         return view('welcome',['image1' => $image1,'images1' => $images1,
