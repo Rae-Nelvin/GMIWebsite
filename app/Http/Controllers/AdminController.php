@@ -27,7 +27,7 @@ class AdminController extends Controller
     }
 
     function photos(){
-        $photo = Photos::paginate(5);
+        $photo = Photos::where("types","=","Screenshoot")->orWhere("types","=","Background")->paginate(5);
         $id = Session::get('LoggedUser');
         $admin = User::where('id', $id)->get(['name']);
         return view('admin.photos', ['admin'=>$admin,'photo'=>$photo]);
